@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  applyForm = new FormGroup({
+    firstName: new FormControl('')
+  });
+
+  submitApplication(){
+    console.log(this.applyForm.value.firstName ?? '');
+  }
   constructor() { }
 
 }
