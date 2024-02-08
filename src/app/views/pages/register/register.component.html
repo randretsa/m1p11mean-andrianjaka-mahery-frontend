@@ -11,7 +11,7 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="last-name" cFormControl placeholder="Nom" />
+                <input autoComplete="last-name" cFormControl formControlName="lastName" placeholder="Nom" />
               </c-input-group>
               
               <c-input-group class="mb-3">
@@ -25,15 +25,15 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilCalendar"></svg>
                 </span>
-                <input autoComplete="date-of-birth" cFormControl type="date" placeholder="Date de naissance" />
+                <input autoComplete="date-of-birth" cFormControl type="date" formControlName="birthDate" placeholder="Date de naissance" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <c-form-check style="margin: 2%;">
-                  <input cFormCheckInput type="radio" value="one" name="sexe" checked/>
+                  <input cFormCheckInput type="radio" value="MALE" formControlName="gender" checked/>
                   <label cFormCheckLabel>homme</label>
                 </c-form-check>
                 <c-form-check style="margin: 2%;">
-                  <input cFormCheckInput type="radio" value="two" name="sexe"/>
+                  <input cFormCheckInput type="radio" value="FEMALE" formControlName="gender"/>
                   <label cFormCheckLabel>femme</label>
                 </c-form-check>
               </c-input-group>
@@ -42,24 +42,24 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilPhone"></svg>
                 </span>
-                <input autoComplete="phone" cFormControl placeholder="Téléphone" />
+                <input autoComplete="phone" cFormControl formControlName="phoneNumber" placeholder="Téléphone" />
               </c-input-group>
 
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl placeholder="Email" />
+                <input autoComplete="email" cFormControl formControlName="email" placeholder="Email" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Mot de passe" type="password" />
+                <input autoComplete="new-password" formControlName="password" cFormControl placeholder="Mot de passe" type="password" />
               </c-input-group>
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" cFormControl placeholder="Confirmer votre mot de passe" type="password" />
+                <input autoComplete="new-password" formControlName="confirmPassword" cFormControl placeholder="Confirmer votre mot de passe" type="password" />
               </c-input-group>
               <div class="d-grid">
                 <button cButton type="submit" color="dark">S'inscrire</button>
