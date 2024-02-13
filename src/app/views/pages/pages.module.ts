@@ -8,8 +8,7 @@ import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
     GridModule,
     IconModule,
     FormModule,
-    ReactiveFormsModule
+    FormsModule
   ]
 })
 export class PagesModule {
