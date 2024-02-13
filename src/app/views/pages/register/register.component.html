@@ -4,36 +4,36 @@
       <c-col lg="7" md="9" xl="6">
         <c-card class="mx-4">
           <c-card-body class="p-4">
-            <form cForm [formGroup] = "applyForm" (submit)="submitApplication()">
+            <form cForm #registrationForm="ngForm" (submit)="submitApplication(registrationForm)">
               <h1>S'inscrire?</h1>
               <p class="text-medium-emphasis">Créer votre compte</p>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="last-name" cFormControl formControlName="lastName" placeholder="Nom" />
+                <input autoComplete="last-name" cFormControl [(ngModel)]="user.lastName" name="lastName" placeholder="Nom" />
               </c-input-group>
               
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilUser"></svg>
                 </span>
-                <input autoComplete="first-name" cFormControl formControlName="firstName" placeholder="Prénom" />
+                <input autoComplete="first-name" cFormControl [(ngModel)]="user.firstName" name="firstName" placeholder="Prénom" />
               </c-input-group>
 
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilCalendar"></svg>
                 </span>
-                <input autoComplete="date-of-birth" cFormControl type="date" formControlName="birthDate" placeholder="Date de naissance" />
+                <input autoComplete="date-of-birth" cFormControl type="date" [(ngModel)]="user.birthDate" name="birthDate" placeholder="Date de naissance" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <c-form-check style="margin: 2%;">
-                  <input cFormCheckInput type="radio" value="MALE" formControlName="gender" checked/>
+                  <input cFormCheckInput type="radio" value="MALE" [(ngModel)]="user.gender.code" name="gender" checked/>
                   <label cFormCheckLabel>homme</label>
                 </c-form-check>
                 <c-form-check style="margin: 2%;">
-                  <input cFormCheckInput type="radio" value="FEMALE" formControlName="gender"/>
+                  <input cFormCheckInput type="radio" value="FEMALE" [(ngModel)]="user.gender.code" name="gender"/>
                   <label cFormCheckLabel>femme</label>
                 </c-form-check>
               </c-input-group>
@@ -42,24 +42,24 @@
                 <span cInputGroupText>
                   <svg cIcon name="cilPhone"></svg>
                 </span>
-                <input autoComplete="phone" cFormControl formControlName="phoneNumber" placeholder="Téléphone" />
+                <input autoComplete="phone" cFormControl [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Téléphone" />
               </c-input-group>
 
               <c-input-group class="mb-3">
                 <span cInputGroupText>&#64;</span>
-                <input autoComplete="email" cFormControl formControlName="email" placeholder="Email" />
+                <input autoComplete="email" cFormControl [(ngModel)]="user.email" name="email" placeholder="Email" />
               </c-input-group>
               <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" formControlName="password" cFormControl placeholder="Mot de passe" type="password" />
+                <input autoComplete="new-password" [(ngModel)]="user.password" name="password" cFormControl placeholder="Mot de passe" type="password" />
               </c-input-group>
               <c-input-group class="mb-4">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
-                <input autoComplete="new-password" formControlName="confirmPassword" cFormControl placeholder="Confirmer votre mot de passe" type="password" />
+                <input autoComplete="new-password" ngModel name="confirmPassword" cFormControl placeholder="Confirmer votre mot de passe" type="password" />
               </c-input-group>
               <div class="d-grid">
                 <button cButton type="submit" color="dark">S'inscrire</button>
