@@ -19,7 +19,8 @@ export class HistoriqueComponent implements OnInit{
   private appointmentService = inject(AppointmentService);
 
   ngOnInit(): void {
-      this.loadHistorique("65cf0215fde74e4157207b35");
+    let id = localStorage.getItem('_id') || ''
+    this.loadHistorique(id);
   }
 
   loadHistorique(id:string){

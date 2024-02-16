@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import {
@@ -11,6 +11,9 @@ import {
   ListGroupModule,
   SharedModule
 } from '@coreui/angular';
+import { ServicesService } from '../../../services/services/services.service';
+import { FormsModule } from '@angular/forms';
+import { ListServiceComponent } from '../list-service/list-service.component';
 
 @Component({
   selector: 'app-form-service',
@@ -25,22 +28,23 @@ import {
     ButtonGroupModule,
     DropdownModule,
     SharedModule,
-    ListGroupModule],
+    ListGroupModule,
+    FormsModule],
   templateUrl: './form-service.component.html',
   styleUrl: './form-service.component.scss'
 })
 export class FormServiceComponent implements OnInit{
 
-  name:string;
-  price:number;
-  duration:number;
-  commission:number;
+  serviceInfo = {
+    name:'',
+    price:0,
+    duration:0,
+    commission:0
+  }
+  private serviceService = inject(ServicesService);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, public dialogRef:MatDialogRef<FormServiceComponent>){
-    this.name = data.name;
-    this.price = data.price;
-    this.duration = data.duration;
-    this.commission = data.commission;
+
   }
 
   ngOnInit(): void {
@@ -48,7 +52,12 @@ export class FormServiceComponent implements OnInit{
   }
 
   createService(){
-    console.log(this.name)
+    this.serviceService.createService(this.serviceInfo).subscribe({
+      next: (service:any)=>{
+        console.log(service);
+      },
+      error: (error) => console.log('Error creating service',error)
+    });
   }
 
 }

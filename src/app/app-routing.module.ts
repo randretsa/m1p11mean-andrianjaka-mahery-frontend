@@ -16,7 +16,7 @@ import { TacheComponent } from './views/rendez-vous/tache/tache.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {

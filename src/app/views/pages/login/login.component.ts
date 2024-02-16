@@ -23,7 +23,7 @@ export class LoginComponent {
       response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('_id', response._id);
-        this.router.navigate(['/']);
+        this.router.navigate(['client/historique']);
       },
       error => {
         this.router.navigate(['404']);

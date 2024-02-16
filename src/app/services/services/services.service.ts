@@ -18,8 +18,8 @@ export class ServicesService {
     return this.http.delete(this.endpointURL+"/"+id);
   }
 
-  /*post(newService:any){
-    return;
-  }*/
+  createService(newService:any){
+    return this.http.post<any>(this.endpointURL, newService);
+  }
 
 }

@@ -1,24 +1,24 @@
 <h2 mat-dialog-title>Ajouter un nouveau service</h2>
-<mat-dialog-content>
-    <form cForm>
-      <div class="mb-3">
-        <label cLabel for="exampleFormControlInput1">Nom</label>
-        <input cFormControl type="text"/>
-      </div>
-      <div class="mb-3">
-        <label cLabel for="exampleFormControlInput1">Prix</label>
-        <input cFormControl type="text"/>
-      </div>
-      <div class="mb-3">
-        <label cLabel for="exampleFormControlInput1">Durée</label>
-        <input cFormControl type="text"/>
-      </div>
-      <div class="mb-3">
-        <label cLabel for="exampleFormControlInput1">Commission</label>
-        <input cFormControl type="text"/>
-      </div>
-    </form>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-    <button states="normal" color="primary" cButton>Okay</button>
-</mat-dialog-actions>
+<form cForm (submit)="createService()">
+  <mat-dialog-content>
+    <div class="mb-3">
+      <label cLabel for="exampleFormControlInput1">Nom</label>
+      <input cFormControl [(ngModel)]="serviceInfo.name" type="text" name="name"/>
+    </div>
+    <div class="mb-3">
+      <label cLabel for="exampleFormControlInput1">Prix</label>
+      <input cFormControl [(ngModel)]="serviceInfo.price" type="text" name="price"/>
+    </div>
+    <div class="mb-3">
+      <label cLabel for="exampleFormControlInput1">Durée</label>
+      <input cFormControl [(ngModel)]="serviceInfo.duration" type="text" name="duration"/>
+    </div>
+    <div class="mb-3">
+      <label cLabel for="exampleFormControlInput1">Commission</label>
+      <input cFormControl [(ngModel)]="serviceInfo.commission" type="text" name="commission"/>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="submit" states="normal" color="primary" mat-dialog-close cButton>Insérer</button>
+  </mat-dialog-actions>
+</form>

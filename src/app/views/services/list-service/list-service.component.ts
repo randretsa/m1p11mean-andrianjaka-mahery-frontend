@@ -4,7 +4,6 @@ import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormServiceComponent } from '../form-service/form-service.component';
 import { ServicesService } from '../../../services/services/services.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-service',
@@ -31,7 +30,6 @@ export class ListServiceComponent implements OnInit{
         this.serviceList = services;
       });*/
       this.loadServices();
-      console.log("uion");
   }
 
   openServiceForm(){
@@ -49,7 +47,6 @@ export class ListServiceComponent implements OnInit{
     this.serviceService.getAllServices().subscribe({
       next: (services:any)=>{
         this.serviceList = services;
-        console.log(services);
       },
       error: (error) => console.log('Error fetching services',error)
     });
