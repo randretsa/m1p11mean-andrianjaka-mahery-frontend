@@ -56,6 +56,11 @@ const routes: Routes = [
           import('./views/icons/icons.module').then((m) => m.IconsModule)
       },
       {
+        path: 'users',
+        loadChildren: () =>
+          import('./views/users/users.module').then((m) => m.UsersModule)
+      },
+      {
         path: 'notifications',
         loadChildren: () =>
           import('./views/notifications/notifications.module').then((m) => m.NotificationsModule)
