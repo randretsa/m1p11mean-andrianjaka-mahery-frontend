@@ -19,37 +19,23 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>&#64;mdo</td>
-                <td><button states="normal" color="warning" cButton>Modifier</button></td>
-                <td><button states="normal" color="danger" cButton>Supprimer</button></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Otto</td>
-                <td>Thornton</td>
-                <td>&#64;fat</td>
-                <td><button states="normal" color="warning" cButton>Modifier</button></td>
-                <td><button states="normal" color="danger" cButton>Supprimer</button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Otto</td>
-                <td>Larry the Bird</td>
-                <td>Larry the Bird</td>
-                <td>&#64;twitter</td>
-                <td><button states="normal" color="warning" cButton>Modifier</button></td>
-                <td><button states="normal" color="danger" cButton>Supprimer</button></td>
-              </tr>
+                @for (service of serviceList; track $index) {
+                  <tr>
+                    <th scope="row">{{ $index+1 }}</th>
+                    <td>{{ service.name }}</td>
+                    <td>{{ service.price }} Ariary</td>
+                    <td>{{ service.duration }} min</td>
+                    <td>{{ service.commission }}%</td>
+                    <td><button states="normal" color="warning" cButton>Modifier</button></td>
+                    <td><button states="normal" color="danger" (click)="deleteService(service._id)" cButton>Supprimer</button></td>
+                  </tr>
+                  }
+                @empty {
+                  No services
+                }
               </tbody>
             </table>
         </c-card-body>
       </c-card>
     </c-col>
   </c-row>
-  
