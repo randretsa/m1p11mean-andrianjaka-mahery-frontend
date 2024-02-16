@@ -6,6 +6,12 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { ListServiceComponent } from './views/services/list-service/list-service.component';
+import { PrendreRdvComponent } from './views/rendez-vous/prendre-rdv/prendre-rdv.component';
+import { HistoriqueComponent } from './views/rendez-vous/historique/historique.component';
+import { DetailComponent } from './views/rendez-vous/detail/detail.component';
+import { ListeComponent } from './views/rendez-vous/liste/liste.component';
+import { TacheComponent } from './views/rendez-vous/tache/tache.component';
 
 const routes: Routes = [
   {
@@ -24,6 +30,48 @@ const routes: Routes = [
         path: 'dashboard',
         loadChildren: () =>
           import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
+      },
+      {
+        path: 'service',
+        component: ListServiceComponent,
+        data: {
+          title: 'List Service'
+        }
+      },
+      {
+        path: 'client/prendre',
+        component: PrendreRdvComponent,
+        data: {
+          title: 'Rendez-vous'
+        }
+      },
+      {
+        path: 'client/historique',
+        component: HistoriqueComponent,
+        data: {
+          title: 'Rendez-vous'
+        }
+      },
+      {
+        path: 'client/detail',
+        component: DetailComponent,
+        data: {
+          title: 'Rendez-vous'
+        }
+      },
+      {
+        path: 'employe/liste',
+        component: ListeComponent,
+        data: {
+          title: 'Liste rendez-vous'
+        }
+      },
+      {
+        path: 'employe/tache',
+        component: TacheComponent,
+        data: {
+          title: 'Liste rendez-vous'
+        }
       },
       {
         path: 'theme',

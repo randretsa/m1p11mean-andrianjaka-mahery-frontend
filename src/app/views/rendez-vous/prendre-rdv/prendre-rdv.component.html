@@ -1,0 +1,51 @@
+<c-row>
+    <c-col xs="6">
+      <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+          <strong>Prendre rendez-vous</strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm class="row g-3">
+                <c-col md="12">
+                <label cLabel for="inputDate">Date</label>
+                <input cFormControl id="inputEmail4" type="date" />
+                </c-col>
+                <c-col md="12">
+                <label cLabel for="inputHeure">Heure</label>
+                <input cFormControl id="inputHeure" type="time" />
+                </c-col>
+                <c-col md="12">
+                    <label cLabel for="inputState">Employe</label>
+                    <select cSelect id="inputState">
+                        <option>Rakoto Jean</option>
+                        <option>Olona hafa</option>
+                    </select>
+                </c-col>
+                <c-col xs="12">
+                    <label cLabel for="inputState">Services</label>
+                    @for (service of serviceList; track $index) {
+                        <c-form-check>
+                            <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" />
+                            <label cFormCheckLabel for="gridCheck">{{ service.name }}</label>
+                        </c-form-check>
+                    }
+                    @empty {
+                        No services
+                    }
+                </c-col>
+                <c-col md="12">
+                    <label cLabel for="inputState">Rappel</label>
+                    <select cSelect id="inputState">
+                        <option>5 heures</option>
+                        <option>...</option>
+                    </select>
+                </c-col>
+                <c-col xs="12">
+                <button cButton type="submit">Valider</button>
+                </c-col>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  
