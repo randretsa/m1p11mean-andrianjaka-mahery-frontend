@@ -22,6 +22,7 @@ export class LoginComponent {
     .subscribe(
       response => {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('_id', response._id);
         this.router.navigate(['/']);
       },
       error => {

@@ -4,7 +4,7 @@ export interface IUser {
     _id: string | null,
     lastName: string,
     firstName: string,
-    birthDate: Date,
+    birthDate: Date | null,
     gender: {
         code: string,
         name: string | null

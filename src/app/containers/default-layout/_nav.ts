@@ -9,6 +9,25 @@ export const navItems: INavData[] = [
       color: 'info',
       text: 'NEW'
     }
+  },  
+  {
+    title: true,
+    name: 'User'
+  },
+  {
+    name: 'users',
+    url: '',
+    iconComponent: { name: 'cil-drop' },
+    children:[
+      {
+        name: 'users-list',
+        url: '/users/user-list'
+      },
+      {
+        name: 'user-detail',
+        url: '/users/user-details',
+      }
+    ]
   },
   {
     title: true,
