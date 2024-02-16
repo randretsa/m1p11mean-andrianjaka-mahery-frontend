@@ -22,7 +22,8 @@ export class LoginComponent {
     .subscribe(
       response => {
         localStorage.setItem('token', response.token);
-        localStorage.setItem('_id', response._id);
+        localStorage.setItem('_id', response.user._id);
+        localStorage.setItem('user', JSON.stringify(response.user));
         this.router.navigate(['client/historique']);
       },
       error => {

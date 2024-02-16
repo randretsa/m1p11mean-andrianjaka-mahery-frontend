@@ -305,3 +305,77 @@ export const navItems: INavData[] = [
     attributes: { target: '_blank' }
   }
 ];
+
+export const customNavItems = (userPrivilege: string): INavData[] => {
+  let items: INavData[] = [];    
+  if(userPrivilege == 'EMPLOYEE'){
+    items = [
+      {
+        title: true,
+        name: 'User'
+      },
+      {
+        name: 'users',
+        url: '',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'users-list',
+            url: '/users/user-list'
+          },
+          {
+            name: 'user-detail',
+            url: '/users/user-details',
+          }
+        ]
+      }
+    ]
+  } else if(userPrivilege == 'MANAGER'){
+    items = [
+      {
+        title: true,
+        name: 'User'
+      },
+      {
+        name: 'users',
+        url: '',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'users-list',
+            url: '/users/user-list'
+          },
+          {
+            name: 'user-detail',
+            url: '/users/user-details',
+          }
+        ]
+      }
+    ]
+  }
+  else if(userPrivilege =='CLIENT'){
+    items = [
+      {
+        title: true,
+        name: 'User'
+      },
+      {
+        name: 'users',
+        url: '',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'users-list',
+            url: '/users/user-list'
+          },
+          {
+            name: 'user-detail',
+            url: '/users/user-details',
+          }
+        ]
+      }
+    ]
+  }
+
+  return items;
+}
