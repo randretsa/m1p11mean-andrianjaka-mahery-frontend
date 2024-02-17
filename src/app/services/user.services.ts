@@ -14,6 +14,9 @@ export class UserService {
       });
     constructor(private http: HttpClient){}
 
+    getUsersByPrivilege(privilege: string | null): Observable<IUser[]>{
+        return this.http.get<IUser[]>(this._url+'/users-privilege/'+privilege, {headers: this.headers});        
+    }
     getUserById(userId: string | null): Observable<IUser>{
         return this.http.get<IUser>(this._url+'/'+userId, {headers: this.headers});
     }
