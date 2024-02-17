@@ -21,6 +21,7 @@ import { ServicesService } from '../../../services/services/services.service';
 export class PrendreRdvComponent implements OnInit{
 
   serviceList: any = [];
+  employeList: any = [];
   private serviceService = inject(ServicesService);
 
   ngOnInit(): void {
@@ -35,6 +36,10 @@ export class PrendreRdvComponent implements OnInit{
       },
       error: (error) => console.log('Error fetching services',error)
     });
+  }
+
+  loadService(){
+    
   }
 
 }
