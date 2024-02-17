@@ -1,0 +1,41 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Historique des rendez-vous</strong>
+        </c-card-header>
+        <c-card-body>
+            <table [hover]="true" [striped]="true" cTable>
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Heure</th>
+                <th scope="col">Prix Total</th>
+                <th scope="col">Etat</th>
+              </tr>
+              </thead>
+              <tbody>
+                @for (appointment of appoitmentList; track $index) {
+                  <tr>
+                    <th scope="row">{{ $index+1 }}</th>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.heure }}</td>
+                    <td>{{ appointment.heure }}</td>
+                    <td>
+                      @if (appointment.ispayed==true){
+                        payé
+                      } @else{
+                        <button states="normal" color="primary" cButton (click)="payedAppointement(appointment._id)">Payer</button>
+                      }
+                    </td>
+                  </tr>
+                } @empty {
+                  Pas de rendez-vous
+                }
+              </tbody>
+            </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>

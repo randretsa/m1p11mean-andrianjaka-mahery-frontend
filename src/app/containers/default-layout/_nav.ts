@@ -2,15 +2,6 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
-    url: '/dashboard',
-    iconComponent: { name: 'cil-speedometer' },
-    badge: {
-      color: 'info',
-      text: 'NEW'
-    }
-  },  
-  {
     title: true,
     name: 'User'
   },
@@ -30,8 +21,43 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    title: true,
-    name: 'Theme'
+    name: 'Services',
+    url: '/service',
+    iconComponent: { name: 'cil-drop' }
+  },
+  {
+    name: 'Client',
+    url: '/client',
+    iconComponent: { name: 'cil-drop' },
+    children: [
+      {
+        name: 'Prendre',
+        url: '/client/prendre'
+      },
+      {
+        name: 'Historique',
+        url: '/client/historique'
+      },
+      {
+        name: 'Détail',
+        url: '/client/detail'
+      }
+    ]
+  },
+  {
+    name: 'Employe',
+    url: '/employe',
+    iconComponent: { name: 'cil-drop' },
+    children: [
+      {
+        name: 'Liste',
+        url: '/employe/liste'
+      },
+      {
+        name: 'Tache',
+        url: '/employe/tache'
+      }
+    ]
   },
   {
     name: 'Colors',
@@ -279,3 +305,77 @@ export const navItems: INavData[] = [
     attributes: { target: '_blank' }
   }
 ];
+
+export const customNavItems = (userPrivilege: string): INavData[] => {
+  let items: INavData[] = [];    
+  if(userPrivilege == 'EMPLOYEE'){
+    items = [
+      {
+        title: true,
+        name: 'User'
+      },
+      {
+        name: 'users',
+        url: '',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'users-list',
+            url: '/users/user-list'
+          },
+          {
+            name: 'user-detail',
+            url: '/users/user-details',
+          }
+        ]
+      }
+    ]
+  } else if(userPrivilege == 'MANAGER'){
+    items = [
+      {
+        title: true,
+        name: 'User'
+      },
+      {
+        name: 'users',
+        url: '',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'users-list',
+            url: '/users/user-list'
+          },
+          {
+            name: 'user-detail',
+            url: '/users/user-details',
+          }
+        ]
+      }
+    ]
+  }
+  else if(userPrivilege =='CLIENT'){
+    items = [
+      {
+        title: true,
+        name: 'User'
+      },
+      {
+        name: 'users',
+        url: '',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'users-list',
+            url: '/users/user-list'
+          },
+          {
+            name: 'user-detail',
+            url: '/users/user-details',
+          }
+        ]
+      }
+    ]
+  }
+
+  return items;
+}

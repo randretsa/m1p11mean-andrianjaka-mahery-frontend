@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
 
 import { navItems } from './_nav';
-
+import { customNavItems } from './_nav';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './default-layout.component.html',
   styleUrls: ['./default-layout.component.scss'],
 })
 export class DefaultLayoutComponent {
-
+  
   public navItems = navItems;
 
-  constructor() {}
+  constructor() {
+    const user = JSON.parse(localStorage.getItem('user')||'');
+    this.navItems = customNavItems(user.privilege.code);
+    console.log(user);
+  }
 }
