@@ -7,6 +7,8 @@ import { FormModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
 import { IconModule } from '@coreui/icons-angular';
 import { ButtonModule } from '@coreui/angular';
+import { TableModule } from '@coreui/angular';
+import { UsersListComponent } from './employees/users_list.component';
 @NgModule({
   imports: [
     UsersRoutingModule,
@@ -16,10 +18,12 @@ import { ButtonModule } from '@coreui/angular';
     FormModule,
     FormsModule,
     IconModule,
-    ButtonModule
+    ButtonModule,
+    TableModule
   ],
   declarations: [
-    UserDetailComponent
+    UserDetailComponent,
+    UsersListComponent
   ]
 })
 export class UsersModule {
