@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Ajouter un nouveau service</h2>
-<form cForm (submit)="createService()">
+<h2 mat-dialog-title>{{ pageInfo.title }}</h2>
+<form cForm (submit)="submitForm(serviceId)">
   <mat-dialog-content>
     <div class="mb-3">
       <label cLabel for="exampleFormControlInput1">Nom</label>
@@ -19,6 +19,6 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button type="submit" states="normal" color="primary" mat-dialog-close cButton>Insérer</button>
+    <button type="submit" states="normal" color="{{ pageInfo.color }}" mat-dialog-close cButton>{{ pageInfo.label }}</button>
   </mat-dialog-actions>
 </form>

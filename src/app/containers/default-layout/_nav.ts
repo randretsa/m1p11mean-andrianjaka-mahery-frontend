@@ -346,7 +346,12 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
             url: '/users/user-list'
           }
         ]
-      }
+      },
+      {
+        name: 'Services',
+        url: '/service',
+        iconComponent: { name: 'cil-drop' }
+      },
     ]
   }
   else if(userPrivilege =='CLIENT'){

@@ -32,14 +32,16 @@ export class ListServiceComponent implements OnInit{
       this.loadServices();
   }
 
-  openServiceForm(){
+  openServiceForm(action:string,id:string){
     const myDialogue = this.dialog.open(FormServiceComponent,{
       data: {
-
+        action: action,
+        serviceId: id
       }
     });
     myDialogue.afterClosed().subscribe(result=>{
       console.log(result);
+      this.loadServices();
     });
   }
 

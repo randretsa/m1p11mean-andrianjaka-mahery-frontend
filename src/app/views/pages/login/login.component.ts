@@ -23,8 +23,15 @@ export class LoginComponent {
       response => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('_id', response.user._id);
+        const user:any = response.user;
         localStorage.setItem('user', JSON.stringify(response.user));
-        this.router.navigate(['rendez-vous/prendre']);
+        if (user.privilege.code=="CLIENT"){
+          this.router.navigate(['rendez-vous/prendre']);
+        } else if (user.privilege.code=="EMPLOYEE"){
+          this.router.navigate(['rendez-vous/list']);
+        } else if(user.privilege.code=="MANAGER"){
+          this.router.navigate(['/users/user-list']);
+        }
       },
       error => {
         this.router.navigate(['404']);

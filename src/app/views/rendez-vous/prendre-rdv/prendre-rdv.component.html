@@ -7,18 +7,21 @@
         <c-card-body>
             <form cForm class="row g-3">
                 <c-col md="12">
-                <label cLabel for="inputDate">Date</label>
-                <input cFormControl id="inputEmail4" type="date" />
+                    <label cLabel for="inputDate">Date</label>
+                    <input cFormControl id="inputDate" [(ngModel)]="appointmentInfo.date" type="date" name="date"/>
                 </c-col>
                 <c-col md="12">
-                <label cLabel for="inputHeure">Heure</label>
-                <input cFormControl id="inputHeure" type="time" />
+                    <label cLabel for="inputHeure">Heure</label>
+                    <input cFormControl id="inputHeure" [(ngModel)]="appointmentInfo.heure" type="time" name="heure"/>
                 </c-col>
                 <c-col md="12">
                     <label cLabel for="inputState">Employe</label>
-                    <select cSelect id="inputState">
-                        <option>Rakoto Jean</option>
-                        <option>Olona hafa</option>
+                    <select cSelect id="inputState" [(ngModel)]="appointmentInfo.employe">
+                        @for (employe of employeList; track $index){
+                            <option [value]="employe._id">{{ employe.firstName }} {{ employe.lastName }}</option>
+                        } @empty {
+                            No employe
+                        }
                     </select>
                 </c-col>
                 <c-col xs="12">
@@ -36,8 +39,10 @@
                 <c-col md="12">
                     <label cLabel for="inputState">Rappel</label>
                     <select cSelect id="inputState">
+                        <option>2 heures</option>
+                        <option>3 heures</option>
                         <option>5 heures</option>
-                        <option>...</option>
+                        <option>8 heures</option>
                     </select>
                 </c-col>
                 <c-col xs="12">

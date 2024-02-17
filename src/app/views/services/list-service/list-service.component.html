@@ -5,7 +5,7 @@
           <strong>Liste des services</strong>
         </c-card-header>
         <c-card-body>
-          <button states="normal" color="primary" cButton (click)="openServiceForm()">Ajouter</button>
+          <button states="normal" color="primary" cButton (click)="openServiceForm('create','')">Ajouter</button>
             <table [hover]="true" [striped]="true" cTable>
               <thead>
               <tr>
@@ -26,7 +26,7 @@
                     <td>{{ service.price }} Ariary</td>
                     <td>{{ service.duration }} min</td>
                     <td>{{ service.commission }}%</td>
-                    <td><button states="normal" color="warning" cButton>Modifier</button></td>
+                    <td><button states="normal" color="warning" (click)="openServiceForm('modif',service._id)" cButton>Modifier</button></td>
                     <td><button states="normal" color="danger" (click)="deleteService(service._id)" cButton>Supprimer</button></td>
                   </tr>
                   }

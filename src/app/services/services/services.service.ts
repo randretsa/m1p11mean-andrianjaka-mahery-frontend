@@ -22,4 +22,12 @@ export class ServicesService {
     return this.http.post<any>(this.endpointURL, newService);
   }
 
+  updateService(id:string,newService:any){
+    return this.http.put(this.endpointURL+"/"+id,newService);
+  }
+
+  getServiceById(id:string){
+    return this.http.get(this.endpointURL+"/"+id);
+  }
+
 }
