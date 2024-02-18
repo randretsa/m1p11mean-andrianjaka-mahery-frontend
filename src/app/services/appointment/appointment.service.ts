@@ -24,4 +24,8 @@ export class AppointmentService {
   payedAppointment(id:string){
     return this.http.patch(this.endpointURL+"/payed/"+id,null);
   }
+
+  getAppointmentById(id:string){
+    return this.http.get(this.endpointURL+"/"+id);
+  }
 }

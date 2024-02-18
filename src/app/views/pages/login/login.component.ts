@@ -24,7 +24,7 @@ export class LoginComponent {
         localStorage.setItem('token', response.token);
         localStorage.setItem('_id', response.user._id);
         localStorage.setItem('user', JSON.stringify(response.user));
-        this.router.navigate(['client/historique']);
+        this.router.navigate(['rendez-vous/prendre']);
       },
       error => {
         this.router.navigate(['404']);

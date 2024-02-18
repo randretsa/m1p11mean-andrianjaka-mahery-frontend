@@ -12,6 +12,7 @@
                 <th scope="col">Date</th>
                 <th scope="col">Heure</th>
                 <th scope="col">Prix Total</th>
+                <th scope="col"></th>
                 <th scope="col">Etat</th>
               </tr>
               </thead>
@@ -22,6 +23,7 @@
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.heure }}</td>
                     <td>{{ appointment.heure }}</td>
+                    <td><button states="normal" color="info" cButton (click)="detailAppointment(appointment)">Détail</button></td>
                     <td>
                       @if (appointment.ispayed==true){
                         payé

@@ -39,35 +39,35 @@ const routes: Routes = [
         }
       },
       {
-        path: 'client/prendre',
+        path: 'rendez-vous/prendre',
         component: PrendreRdvComponent,
         data: {
           title: 'Rendez-vous'
         }
       },
       {
-        path: 'client/historique',
+        path: 'rendez-vous/historique',
         component: HistoriqueComponent,
         data: {
           title: 'Rendez-vous'
         }
       },
       {
-        path: 'client/detail',
+        path: 'rendez-vous/detail/:id',
         component: DetailComponent,
         data: {
           title: 'Rendez-vous'
         }
       },
       {
-        path: 'employe/liste',
+        path: 'rendez-vous/list',
         component: ListeComponent,
         data: {
-          title: 'Liste rendez-vous'
+          title: 'Liste'
         }
       },
       {
-        path: 'employe/tache',
+        path: 'rendez-vous/tache',
         component: TacheComponent,
         data: {
           title: 'Liste rendez-vous'

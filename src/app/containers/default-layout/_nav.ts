@@ -312,20 +312,20 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
     items = [
       {
         title: true,
-        name: 'User'
+        name: 'Rendez-vous'
       },
       {
-        name: 'users',
-        url: '',
+        name: 'rendez-vous',
+        url: '/rendez-vous',
         iconComponent: { name: 'cil-drop' },
         children:[
           {
-            name: 'users-list',
-            url: '/users/user-list'
+            name: 'Liste',
+            url: '/rendez-vous/list'
           },
           {
-            name: 'user-detail',
-            url: '/users/user-details',
+            name: 'Tache',
+            url: '/rendez-vous/tache'
           }
         ]
       }
@@ -353,20 +353,20 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
     items = [
       {
         title: true,
-        name: 'User'
+        name: 'rendez-vous'
       },
       {
-        name: 'users',
-        url: '',
+        name: 'rendez-vous',
+        url: '/rendez-vous',
         iconComponent: { name: 'cil-drop' },
         children:[
           {
-            name: 'users-list',
-            url: '/users/user-list'
+            name: 'Prendre',
+            url: '/rendez-vous/prendre'
           },
           {
-            name: 'user-detail',
-            url: '/users/user-details',
+            name: 'Historique',
+            url: '/rendez-vous/historique',
           }
         ]
       }
