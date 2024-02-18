@@ -7,9 +7,9 @@
     <c-row class="page-row">
     <c-card>
         <c-card-body>
-            <h5 cCardTitle>Mon profil</h5>
+            <h5 cCardTitle>Profil</h5>
             <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
-            Gérez votre profil
+            Gérez le profil
             </h6>
             <form  form [formGroup]="profileForm" cForm>
                 <c-row>
@@ -66,7 +66,7 @@
                 </c-row>
 
                 <c-row *ngIf="user?.privilege?.code === 'EMPLOYEE'">
-                    <h2>Horaires de travails</h2>
+                    <h2>Horaires de travail</h2>
                     <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
                         Heures de travail
                     </h6>
