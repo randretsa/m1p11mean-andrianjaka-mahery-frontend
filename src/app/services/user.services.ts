@@ -32,4 +32,14 @@ export class UserService {
     login(userData: any){
         return this.http.post<any>(this._url+'/login', userData);
     }
+
+    // saveUser(user: any){
+    //     return this.http.post<any>(this._url, user);
+    // }
+    saveUser(user: any){
+        return this.http.post<any>(this._url, user);
+      }
+    updateUser(user: any){
+        return this.http.put<any>(this._url+'/'+user._id, user);
+    }
 }
