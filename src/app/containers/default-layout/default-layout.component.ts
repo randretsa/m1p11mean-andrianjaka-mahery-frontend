@@ -41,7 +41,7 @@ ngOnInit(): void {
 
 handleNotificationClick() {
     this.swPush.notificationClicks.subscribe(({action, notification}) => {
-        alert('ok');
+        console.log('ok');
          
     });
 }
