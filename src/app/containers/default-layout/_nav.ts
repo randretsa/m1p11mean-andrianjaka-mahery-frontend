@@ -374,6 +374,11 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
             url: '/rendez-vous/historique',
           }
         ]
+      },
+      {
+        name:'notification',
+        url:'users/notification',
+        iconComponent: {name:'cil-drop'}
       }
     ]
   }

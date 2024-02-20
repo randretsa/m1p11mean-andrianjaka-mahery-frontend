@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserDetailComponent } from './employees/user.component';
 import { UsersListComponent} from './employees/users_list.component';
+import {NotificationComponent} from './notifications/notification.component';
 const routes: Routes = [
   {
     path: '',
@@ -29,6 +30,13 @@ const routes: Routes = [
         }
       }
     ]
+  },
+  {
+    path: 'notification',
+    component: NotificationComponent,
+    data: {
+      title: 'Notifications'
+    }
   }
 ];
 
