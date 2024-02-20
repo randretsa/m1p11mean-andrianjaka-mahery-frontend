@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
     
     private _url: string = 'http://localhost:3500/users';
+    
     private headers = new HttpHeaders({
         'Authorization': localStorage.getItem('token') || ''
       });
