@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableModule } from '@coreui/angular';
-import { ListServiceComponent } from './list-service/list-service.component';
-import { FormServiceComponent } from './form-service/form-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonGroupModule,
@@ -14,10 +12,11 @@ import {
   ListGroupModule,
   SharedModule
 } from '@coreui/angular';
-
+import {SpecialOfferComponent} from './special-offers/special-offers.component'
+import {ServicesRoutingModule} from './services-routing.module'
 @NgModule({
   declarations: [
-    ListServiceComponent,FormServiceComponent
+    SpecialOfferComponent
   ],
   imports: [
     CardModule,TableModule,
@@ -34,7 +33,8 @@ import {
     ButtonGroupModule,
     DropdownModule,
     SharedModule,
-    ListGroupModule
+    ListGroupModule,
+    ServicesRoutingModule
   ],
 })
 export class ServicesModule {

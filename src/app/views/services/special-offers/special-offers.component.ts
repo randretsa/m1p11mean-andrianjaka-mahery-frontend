@@ -1,9 +1,9 @@
 import {Component, OnInit, inject} from '@angular/core';
 
 @Component({
-    templateUrl: 'notification.component.html',
+    templateUrl: 'special-offers.component.html',
 })
-export class NotificationComponent implements OnInit{
+export class SpecialOfferComponent implements OnInit{
     
     constructor(){
 
