@@ -358,6 +358,17 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
           }
         ]
       },
+      {
+        name: 'rendez-vous',
+        url: '/appointments',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'drad and drop',
+            url: '/appointments/list'
+          }
+        ]
+      }
     ]
   }
   else if(userPrivilege =='CLIENT'){

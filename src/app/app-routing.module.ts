@@ -124,6 +124,11 @@ const routes: Routes = [
           import('./views/widgets/widgets.module').then((m) => m.WidgetsModule)
       },
       {
+        path: 'appointments',
+        loadChildren: () =>
+          import('./views/rendez-vous/appointment.module').then((m) => m.AppointmentsModule)
+      },
+      {
         path: 'pages',
         loadChildren: () =>
           import('./views/pages/pages.module').then((m) => m.PagesModule)
