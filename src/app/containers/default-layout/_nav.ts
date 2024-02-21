@@ -337,7 +337,7 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         name: 'Gestion des personnels'
       },
       {
-        name: 'employée',
+        name: 'employées',
         url: '',
         iconComponent: { name: 'cil-drop' },
         children:[
@@ -348,9 +348,15 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         ]
       },
       {
-        name: 'Services',
-        url: '/service',
-        iconComponent: { name: 'cil-drop' }
+        name: 'services',
+        url: '/services',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'offre spécial',
+            url: '/services/special'
+          }
+        ]
       },
     ]
   }
