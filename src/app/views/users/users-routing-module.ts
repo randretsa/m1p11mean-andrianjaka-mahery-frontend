@@ -23,7 +23,7 @@ const routes: Routes = [
         }
       },
       {
-        path: '',
+        path: 'user-list',
         component: UsersListComponent,
         data: {
           title: 'Liste utilisateur'

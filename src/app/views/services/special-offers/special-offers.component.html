@@ -1,0 +1,46 @@
+<c-container>
+    <c-row class="page-row">
+        <c-card>
+            <c-card-body>
+                <h5 cCardTitle>Offre spéciale</h5>
+                <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
+                    Gérez les offres spéciales
+                </h6>
+                <form form [formGroup]="specialOfferForm" cForm>
+                    <c-row>
+                        <c-col>
+                            <c-input-group class="mb-3">
+                                <span cInputGroupText>
+                                    <svg cIcon name="cilUser"></svg>
+                                </span>
+                                <input autoComplete="offer-name" cFormControl formControlName="offerName" placeholder="nom de l'offre" />
+                            </c-input-group>
+                        </c-col>
+                        <c-col>
+                            <c-input-group class="mb-3">
+                                <span cInputGroupText>
+                                    <svg cIcon name="cilDollar"></svg>
+                                </span>
+                                <input autoComplete="offer-price" cFormControl formControlName="offerPrice" placeholder="prix total de l'offre" />
+                            </c-input-group>    
+                        </c-col>
+                    </c-row>
+                    <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
+                        Les services que vous voudrez inclure dans l'offre
+                    </h6>
+                    <div formArrayName="services">
+                        <c-row *ngFor="let service of services.controls; let i=index" [formGroupName]="i">
+                            <c-form-check>
+                                <input cFormCheckInput id="service-{{ i }}" type="checkbox" formControlName="service_id"/>
+                                <label cFormCheckLabel for="service-{{ i }}">{{simple_services[i].name}}</label>
+                              </c-form-check>
+                        </c-row>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button cButton type="submit" color="primary" class="me-md-2" (click)="onCreate()">Créer</button>
+                    </div>
+                </form>
+            </c-card-body>
+        </c-card>
+    </c-row>
+</c-container>

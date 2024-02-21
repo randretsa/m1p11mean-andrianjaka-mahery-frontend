@@ -1,0 +1,28 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Liste des offres spéciaux</strong>
+        </c-card-header>
+        <c-card-body>
+          <button states="normal" color="primary" cButton [routerLink]="['/services/special']">Ajouter</button>
+            <table [hover]="true" [striped]="true" cTable>
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix</th>
+              </tr>
+              </thead>
+              <tbody  *ngFor="let offer of specialOffers">
+                 <tr [routerLink]="['/services/special', offer._id]">
+                    <td scope="col"></td>
+                    <td scope="col">{{offer.offerName}}</td>
+                    <td scope="col">{{offer.offerPrice}}</td>
+                  </tr>                 
+              </tbody>
+            </table>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
