@@ -354,7 +354,7 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         children:[
           {
             name: 'offre spécial',
-            url: '/services/special'
+            url: '/services/special-list'
           }
         ]
       },

@@ -14,9 +14,12 @@ import {
 } from '@coreui/angular';
 import {SpecialOfferComponent} from './special-offers/special-offers.component'
 import {ServicesRoutingModule} from './services-routing.module'
+import { IconModule } from '@coreui/icons-angular';
+import { SpecialOfferListComponent } from './special-offers/special-offers-list.component';
+
 @NgModule({
   declarations: [
-    SpecialOfferComponent
+    SpecialOfferComponent,SpecialOfferListComponent
   ],
   imports: [
     CardModule,TableModule,
@@ -34,7 +37,8 @@ import {ServicesRoutingModule} from './services-routing.module'
     DropdownModule,
     SharedModule,
     ListGroupModule,
-    ServicesRoutingModule
+    ServicesRoutingModule,
+    IconModule
   ],
 })
 export class ServicesModule {

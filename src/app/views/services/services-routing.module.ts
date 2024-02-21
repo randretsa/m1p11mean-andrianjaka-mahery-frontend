@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListServiceComponent } from './list-service/list-service.component';
 import { FormServiceComponent } from './form-service/form-service.component';
 import { SpecialOfferComponent } from './special-offers/special-offers.component';
-
+import {SpecialOfferListComponent} from './special-offers/special-offers-list.component'
 const routes: Routes = [
   {
     path: '',
@@ -27,6 +27,13 @@ const routes: Routes = [
       {
         path: 'special',
         component: SpecialOfferComponent,
+        data: {
+          title: 'spéciale'
+        }
+      },
+      {
+        path: 'special-list',
+        component: SpecialOfferListComponent,
         data: {
           title: 'spéciale'
         }
