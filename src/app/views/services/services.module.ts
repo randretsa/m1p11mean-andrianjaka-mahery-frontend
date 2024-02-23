@@ -1,40 +1,33 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TableModule } from '@coreui/angular';
-import { ListServiceComponent } from './list-service/list-service.component';
+import { ServicesRoutingModule } from './services-routing.module';
 import { FormServiceComponent } from './form-service/form-service.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  ButtonGroupModule,
-  ButtonModule,
-  CardModule,
-  DropdownModule,
-  FormModule,
-  GridModule,
-  ListGroupModule,
-  SharedModule
-} from '@coreui/angular';
+import { ListServiceComponent } from './list-service/list-service.component';
+import { CommonModule } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ButtonGroupModule, ButtonModule, CardModule, DropdownModule, FormModule, GridModule, ListGroupModule, ModalModule, PopoverModule, SharedModule, TableModule, TooltipModule } from '@coreui/angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    ListServiceComponent,FormServiceComponent
-  ],
   imports: [
-    CardModule,TableModule,
-    GridModule,ButtonModule,
+    ServicesRoutingModule,
     CommonModule,
+    MatDialogModule,
     CardModule,
     FormModule,
     GridModule,
     ButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FormModule,
-    ButtonModule,
     ButtonGroupModule,
     DropdownModule,
     SharedModule,
-    ListGroupModule
+    ListGroupModule,
+    FormsModule,
+    TableModule,
+    ModalModule,PopoverModule,
+    TooltipModule
+  ],
+  declarations: [
+    FormServiceComponent,
+    ListServiceComponent
   ],
 })
 export class ServicesModule {

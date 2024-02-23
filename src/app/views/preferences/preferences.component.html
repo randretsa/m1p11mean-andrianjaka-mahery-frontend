@@ -1,0 +1,62 @@
+<c-row>
+    <c-col xs="6">
+      <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+          <strong>
+            @if(!preference.isempty){
+              Modifier les préférences
+            } @else {
+              Ajouter des préférences
+            }
+          </strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm class="row g-3" (submit)="submitForm()">
+                <c-col xs="12">
+                    <label cLabel for="inputState">Services</label>
+                    <select cSelect id="inputState" [(ngModel)]="preference.service" name="service">
+                      @for (service of serviceList; track $index) {
+                        <option [value]="service._id">{{ service.name }}</option>
+                      }
+                      @empty {
+                        No services
+                      }
+                  </select>
+                </c-col>
+                <c-col xs="12">
+                    <label cLabel for="inputState">Employé</label>
+                    <select cSelect id="inputState" [(ngModel)]="preference.employe" name="employe">
+                      @for (employe of employeList; track $index){
+                          <option [value]="employe._id">{{ employe.firstName }} {{ employe.lastName }}</option>
+                      } @empty {
+                          No employe
+                      }
+                  </select>
+                </c-col>
+                <c-col xs="12">
+                  @if(preference.isempty){
+                    <button cButton type="submit" color="primary">Ajouter</button>
+                  } @else {
+                    <button cButton type="submit" color="warning">Modifier</button>
+                  }
+                </c-col>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+
+  @if(!preference.isempty){
+    <c-col xs="6">
+      <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+          <strong>Service préféré</strong>
+        </c-card-header>
+        <c-card-body>
+          <p>Votre service préférée est: {{ preference.serviceName }}</p>
+          <p>Votre service employé est: {{ preference.employeName }}</p>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  }
+  </c-row>
+  

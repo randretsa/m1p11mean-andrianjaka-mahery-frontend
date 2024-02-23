@@ -6,10 +6,6 @@ import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-historique',
-  standalone: true,
-  imports: [CommonModule,
-    CardModule,ButtonModule,
-    TableModule,GridModule],
   templateUrl: './historique.component.html',
   styleUrl: './historique.component.scss'
 })
@@ -29,7 +25,6 @@ export class HistoriqueComponent implements OnInit{
     this.appointmentService.getHistorique(id).subscribe({
       next: (appointments:any)=>{
         this.appoitmentList = appointments;
-        console.log(appointments);
       },
       error: (error) => console.log('Error fetching appointment',error)
     });
@@ -45,8 +40,12 @@ export class HistoriqueComponent implements OnInit{
   }
 
   detailAppointment(appointment:any){
-    this.router.navigate(['rendez-vous/detail',appointment._id]);
+    this.router.navigate(['rendez-vous/historique',appointment._id]);
     //this.router.navigate(['rendez-vous/detail']);
+  }
+  
+  calculateSommeService(appointment:any):number{
+    return appointment.services.reduce((total:number, service:any) => total + service.price, 0);
   }
 
 }

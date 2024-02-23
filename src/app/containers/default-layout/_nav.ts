@@ -315,7 +315,7 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         name: 'Rendez-vous'
       },
       {
-        name: 'rendez-vous',
+        name: 'Rendez-vous',
         url: '/rendez-vous',
         iconComponent: { name: 'cil-drop' },
         children:[
@@ -324,8 +324,8 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
             url: '/rendez-vous/list'
           },
           {
-            name: 'Tache',
-            url: '/rendez-vous/tache'
+            name: 'Tache & Commission',
+            url: '/rendez-vous/task'
           }
         ]
       }
@@ -338,7 +338,7 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
       },
       {
         name: 'employée',
-        url: '',
+        url: '/users',
         iconComponent: { name: 'cil-drop' },
         children:[
           {
@@ -352,16 +352,27 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         url: '/service',
         iconComponent: { name: 'cil-drop' }
       },
+      {
+        name: 'Statistique',
+        url: '/statistique',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'Réservation',
+            url: '/statistique'
+          }
+        ]
+      },
     ]
   }
   else if(userPrivilege =='CLIENT'){
     items = [
       {
         title: true,
-        name: 'rendez-vous'
+        name: 'Rendez-vous'
       },
       {
-        name: 'rendez-vous',
+        name: 'Rendez-vous',
         url: '/rendez-vous',
         iconComponent: { name: 'cil-drop' },
         children:[
@@ -374,6 +385,11 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
             url: '/rendez-vous/historique',
           }
         ]
+      },
+      {
+        name: 'Preference',
+        url: '/preference',
+        iconComponent: { name: 'cil-drop' }
       }
     ]
   }

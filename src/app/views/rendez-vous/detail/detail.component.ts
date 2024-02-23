@@ -6,10 +6,6 @@ import { AppointmentService } from '../../../services/appointment/appointment.se
 
 @Component({
   selector: 'app-detail',
-  standalone: true,
-  imports: [CommonModule,
-    CardModule,ButtonModule,
-    TableModule,GridModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })

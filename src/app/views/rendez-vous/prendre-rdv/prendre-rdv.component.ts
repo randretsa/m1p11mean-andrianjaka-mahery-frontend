@@ -1,23 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsRoutingModule } from '../../forms/forms-routing.module';
-import { DocsComponentsModule } from '@docs-components/docs-components.module';
-import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { ServicesService } from '../../../services/services/services.service';
 import { UserService } from 'src/app/services/user.services';
-import { FormsModule } from '@angular/forms';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 
 @Component({
   selector: 'app-prendre-rdv',
-  standalone: true,
-  imports: [CommonModule,
-    FormsRoutingModule,
-    DocsComponentsModule,
-    CardModule,
-    GridModule,
-    FormModule,
-    ButtonModule,
-    FormsModule],
   templateUrl: './prendre-rdv.component.html',
   styleUrl: './prendre-rdv.component.scss'
 })
@@ -35,6 +22,7 @@ export class PrendreRdvComponent implements OnInit{
   employeList: any = [];
   private serviceService = inject(ServicesService);
   private userService = inject(UserService);
+  private appointmentService = inject(AppointmentService);
 
   ngOnInit(): void {
     this.loadServices();
@@ -45,7 +33,6 @@ export class PrendreRdvComponent implements OnInit{
     this.serviceService.getAllServices().subscribe({
       next: (services:any)=>{
         this.serviceList = services;
-        console.log(services);
       },
       error: (error) => console.log('Error fetching services',error)
     });
@@ -55,10 +42,18 @@ export class PrendreRdvComponent implements OnInit{
     this.userService.getUsersByPrivilege("EMPLOYEE").subscribe({
       next: (employees:any)=>{
         this.employeList = employees;
-        console.log(employees);
       },
       error: (error) => console.log('Error fetching employee',error)
     })
   }
 
+  createAppointment(){
+    console.log(this.appointmentInfo);
+    this.appointmentService.createAppointment(this.appointmentInfo).subscribe({
+      next: (appointment:any)=>{
+        console.log(appointment);
+      },
+      error: (error) => console.log('Error fetching employee',error)
+    });
+  }
 }

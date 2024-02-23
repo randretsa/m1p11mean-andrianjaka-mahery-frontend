@@ -24,7 +24,7 @@
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.heure }}</td>
                     <td>{{ appointment.customer.firstName }} {{ appointment.customer.lastName }}</td>
-                    <td>100 Ar</td>
+                    <td>{{ calculateSommeService(appointment) }} Ar</td>
                     <td><button states="normal" color="info" cButton (click)="detailAppointment(appointment)">Détail</button></td>
                     <td>
                       @if (appointment.ispayed==true){

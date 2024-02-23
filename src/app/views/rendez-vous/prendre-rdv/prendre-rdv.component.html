@@ -5,7 +5,7 @@
           <strong>Prendre rendez-vous</strong>
         </c-card-header>
         <c-card-body>
-            <form cForm class="row g-3">
+            <form cForm class="row g-3" (submit)="createAppointment()">
                 <c-col md="12">
                     <label cLabel for="inputDate">Date</label>
                     <input cFormControl id="inputDate" [(ngModel)]="appointmentInfo.date" type="date" name="date"/>
@@ -16,7 +16,7 @@
                 </c-col>
                 <c-col md="12">
                     <label cLabel for="inputState">Employe</label>
-                    <select cSelect id="inputState" [(ngModel)]="appointmentInfo.employe">
+                    <select cSelect id="inputState" [(ngModel)]="appointmentInfo.employe" name="employe">
                         @for (employe of employeList; track $index){
                             <option [value]="employe._id">{{ employe.firstName }} {{ employe.lastName }}</option>
                         } @empty {
@@ -28,7 +28,7 @@
                     <label cLabel for="inputState">Services</label>
                     @for (service of serviceList; track $index) {
                         <c-form-check>
-                            <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" />
+                            <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" value="{{ service._id }}" name="services[]"/>
                             <label cFormCheckLabel for="gridCheck">{{ service.name }}</label>
                         </c-form-check>
                     }
@@ -38,15 +38,15 @@
                 </c-col>
                 <c-col md="12">
                     <label cLabel for="inputState">Rappel</label>
-                    <select cSelect id="inputState">
-                        <option>2 heures</option>
-                        <option>3 heures</option>
-                        <option>5 heures</option>
-                        <option>8 heures</option>
+                    <select cSelect id="inputState" [(ngModel)]="appointmentInfo.rappel" name="rappel">
+                        <option [value]="2">2 heures</option>
+                        <option [value]="3">3 heures</option>
+                        <option [value]="5">5 heures</option>
+                        <option [value]="8">8 heures</option>
                     </select>
                 </c-col>
                 <c-col xs="12">
-                <button cButton type="submit">Valider</button>
+                    <button cButton type="submit">Valider</button>
                 </c-col>
             </form>
         </c-card-body>

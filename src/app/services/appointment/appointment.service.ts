@@ -28,4 +28,12 @@ export class AppointmentService {
   getAppointmentById(id:string){
     return this.http.get(this.endpointURL+"/"+id);
   }
+
+  getTaskCommission(id:string){
+    return this.http.get(this.endpointURL+"/task/"+id);
+  }
+
+  createAppointment(appointment:any){
+    return this.http.post<any>(this.endpointURL,appointment);
+  }
 }

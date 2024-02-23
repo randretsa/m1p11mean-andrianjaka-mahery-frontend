@@ -1,19 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ButtonModule, CardModule, GridModule, ModalModule, PopoverModule, TableModule, TooltipModule } from '@coreui/angular';
-import { DocsComponentsModule } from '@docs-components/docs-components.module';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { FormServiceComponent } from '../form-service/form-service.component';
 import { ServicesService } from '../../../services/services/services.service';
 
 @Component({
   selector: 'app-list-service',
-  standalone: true,
-  imports: [
-    CardModule,TableModule,
-    GridModule,ButtonModule,
-    ModalModule,PopoverModule,
-    DocsComponentsModule,TooltipModule,MatDialogModule
-  ],
   templateUrl: './list-service.component.html',
   styleUrl: './list-service.component.scss'
 })
@@ -23,12 +14,9 @@ export class ListServiceComponent implements OnInit{
 
   private serviceService = inject(ServicesService);
 
-  constructor(public dialog: MatDialog/*,private sericeService: ServicesService*/){}
+  constructor(public dialog: MatDialog){}
 
   ngOnInit(): void {
-      /*this.sericeService.getAllServices().subscribe((services:any)=>{
-        this.serviceList = services;
-      });*/
       this.loadServices();
   }
 

@@ -1,36 +1,10 @@
 import { Component, Inject, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import {
-  ButtonGroupModule,
-  ButtonModule,
-  CardModule,
-  DropdownModule,
-  FormModule,
-  GridModule,
-  ListGroupModule,
-  SharedModule
-} from '@coreui/angular';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ServicesService } from '../../../services/services/services.service';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ListServiceComponent } from '../list-service/list-service.component';
 
 @Component({
   selector: 'app-form-service',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    CardModule,
-    FormModule,
-    GridModule,
-    ButtonModule,
-    ButtonGroupModule,
-    DropdownModule,
-    SharedModule,
-    ListGroupModule,
-    FormsModule],
   templateUrl: './form-service.component.html',
   styleUrl: './form-service.component.scss'
 })
