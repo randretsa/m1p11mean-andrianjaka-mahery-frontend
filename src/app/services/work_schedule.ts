@@ -18,7 +18,11 @@ export class WorkScheduleService {
         return this.http.get<IWorkSchedule[]>(this._url+'?employeeId='+employeeId, {headers: this.headers});
     }
 
-    updateEmployeeSchedule(schedule: IWorkSchedule | null): Observable<IWorkSchedule[]>{
+    updateEmployeeSchedule(schedule: IWorkSchedule | any): Observable<IWorkSchedule[]>{
         return this.http.put<IWorkSchedule[]>(this._url,schedule,{headers: this.headers});
+    }
+
+    saveSchedule(schedule: any){
+        return this.http.post<any>(this._url, schedule);
     }
 }

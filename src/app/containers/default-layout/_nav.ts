@@ -348,9 +348,15 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         ]
       },
       {
-        name: 'Services',
-        url: '/service',
-        iconComponent: { name: 'cil-drop' }
+        name: 'services',
+        url: '/services',
+        iconComponent: { name: 'cil-drop' },
+        children:[
+          {
+            name: 'offre spécial',
+            url: '/services/special-list'
+          }
+        ]
       },
       {
         name: 'Statistique',

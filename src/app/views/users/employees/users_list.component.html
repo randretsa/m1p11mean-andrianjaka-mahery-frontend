@@ -5,7 +5,7 @@
           <strong>Liste des employées</strong>
         </c-card-header>
         <c-card-body>
-          <button states="normal" color="primary" cButton>Ajouter</button>
+          <button states="normal" color="primary" cButton [routerLink]="['/users/user-details', '']">Ajouter</button>
             <table [hover]="true" [striped]="true" cTable>
               <thead>
               <tr>
@@ -13,19 +13,14 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Prenom</th>
                 <th scope="col">contact</th>
-
-                <th scope="col"></th>
-                <th scope="col"></th>
               </tr>
               </thead>
               <tbody *ngFor="let employee of employees">
                  <tr [routerLink]="['/users/user-details', employee._id]">
                     <td scope="col">{{employee._id}}</td>
                     <td scope="col">{{employee.lastName}}</td>
-                    <td scope="col">{{employee.lastName}}</td>
+                    <td scope="col">{{employee.firstName}}</td>
                     <td scope="col">{{employee.phoneNumber}}</td>
-                    <td scope="col"><button states="normal" color="warning" cButton>Modifier</button></td>
-                    <td scope="col"><button states="normal" color="danger" cButton>Supprimer</button></td>
                   </tr>                 
               </tbody>
             </table>

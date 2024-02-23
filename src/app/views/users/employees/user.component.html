@@ -7,33 +7,33 @@
     <c-row class="page-row">
     <c-card>
         <c-card-body>
-            <h5 cCardTitle>Mon profil</h5>
+            <h5 cCardTitle>Profil</h5>
             <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
-            Gérez votre profil
+            Gérez le profil
             </h6>
-            <form cForm>
+            <form  form [formGroup]="profileForm" cForm>
                 <c-row>
                     <c-col>
                         <c-input-group class="mb-3">
                             <span cInputGroupText>
                                 <svg cIcon name="cilUser"></svg>
                             </span>
-                            <input autoComplete="last-name" cFormControl [(ngModel)]="user.lastName" name="lastName" placeholder="Nom" />
+                            <input autoComplete="last-name" cFormControl formControlName="lastName" placeholder="Nom" />
                         </c-input-group>
                         
                         <c-input-group class="mb-3">
                         <span cInputGroupText>
                             <svg cIcon name="cilUser"></svg>
                         </span>
-                        <input autoComplete="first-name" cFormControl [(ngModel)]="user.firstName" name="firstName" placeholder="Prénom" />
+                        <input autoComplete="first-name" cFormControl formControlName="firstName" placeholder="Prénom" />
                         </c-input-group>
                         <c-input-group class="mb-3">
                         <c-form-check style="margin: 2%;">
-                            <input cFormCheckInput type="radio" value="MALE" [(ngModel)]="user.gender.code" name="gender" checked/>
+                            <input cFormCheckInput type="radio" value="MALE" formControlName="gender"/>
                             <label cFormCheckLabel>homme</label>
                         </c-form-check>
                         <c-form-check style="margin: 2%;">
-                            <input cFormCheckInput type="radio" value="FEMALE" [(ngModel)]="user.gender.code" name="gender"/>
+                            <input cFormCheckInput type="radio" value="FEMALE" formControlName="gender"/>
                             <label cFormCheckLabel>femme</label>
                         </c-form-check>
                         </c-input-group>
@@ -44,53 +44,84 @@
                             <span cInputGroupText>
                                 <svg cIcon name="cilCalendar"></svg>
                             </span>
-                            <input autoComplete="date-of-birth" cFormControl type="date" [ngModel]="formatDateForInput(user.birthDate)" (ngModelChange)="user.birthDate = $event" name="birthDate" placeholder="Date de naissance" />
+                            <input autoComplete="date-of-birth" cFormControl type="date" formControlName="dateOfBirth" placeholder="Date de naissance" />
                         </c-input-group>
                         <c-input-group class="mb-3">
                             <span cInputGroupText>
                                 <svg cIcon name="cilPhone"></svg>
                             </span>
-                            <input autoComplete="phone" cFormControl [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Téléphone" />
+                            <input autoComplete="phone" cFormControl formControlName="phoneNumber" placeholder="Téléphone" />
                             </c-input-group>
             
                             <c-input-group class="mb-3">
                             <span cInputGroupText>&#64;</span>
-                            <input autoComplete="email" cFormControl [(ngModel)]="user.email" name="email" placeholder="Email" />
+                            <input autoComplete="email" cFormControl formControlName="email" placeholder="Email" />
                             </c-input-group>
+
+                            <c-input-group class="mb-3">
+                                <span cInputGroupText>&#64;</span>
+                                <input autoComplete="password" cFormControl formControlName="password" type="password" placeholder="password" />
+                                </c-input-group>
                     </c-col>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <button cButton type="submit" color="dark" class="me-md-2">Mettre à jour</button>
-                    </div>
                 </c-row>
+
+                <c-row *ngIf="user?.privilege?.code === 'EMPLOYEE'">
+                    <h2>Horaires de travail</h2>
+                    <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
+                        Heures de travail
+                    </h6>
+                    <c-col>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText>
+                                <svg cIcon name="cilClock"></svg>
+                            </span>
+                            <input autoComplete="time" cFormControl formControlName="start_time" placeholder="debut" />
+                        </c-input-group>
+                    </c-col>
+                    <c-col>
+                        <c-input-group class="mb-3">
+                            <span cInputGroupText>
+                                <svg cIcon name="cilClock"></svg>
+                            </span>
+                            <input autoComplete="time" cFormControl formControlName="end_time" placeholder="debut" />
+                        </c-input-group>
+                    </c-col>
+                    <h6 cCardSubtitle class="mb-2 text-medium-emphasis">
+                        Heures de pause
+                    </h6>
+                    <div formArrayName="aliases">
+                        <button type="button" (click)="addAlias()">Ajouter des pauses</button>
+                        <c-row *ngFor="let alias of aliases.controls; let i=index" [formGroupName]="i">
+
+                            <c-col>
+                                <c-input-group class="mb-3">
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilClock"></svg>
+                                    </span>
+                                    <input autoComplete="time" cFormControl type="time" id="start_time-{{ i }}" formControlName="start_time" placeholder="debut" />
+                                </c-input-group>
+                            </c-col>
+                            <c-col>
+                                <c-input-group class="mb-3">
+                                    <span cInputGroupText>
+                                        <svg cIcon name="cilClock"></svg>
+                                    </span>
+                                    <input autoComplete="time" cFormControl type="time" id="end_time-{{ i }}" formControlName="end_time" placeholder="fin" />
+                                </c-input-group>
+                            </c-col>
+                        </c-row>
+                    </div>
+                    
+                </c-row>
+                <div *ngIf="isNew == true" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button cButton type="submit" color="primary" class="me-md-2" (click)="createEmployeeProfil()">Créer</button>
+                </div>
+                <div *ngIf="isNew == false" class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button cButton type="submit" color="warning" class="me-md-2" (click)="updateProfil()">Mettre à jour</button>
+                    <button cButton type="submit" color="danger" class="me-md-2">Supprimer</button>
+                </div>
             </form>
         </c-card-body>
       </c-card>
-    </c-row>
-
-    <c-row *ngIf="user?.privilege?.code === 'EMPLOYEE'" class="page-row">
-       <!-- app.component.html -->
-
-<form #scheduleForm="ngForm" (ngSubmit)="updateSchedule()">
-    <div *ngFor="let entry of schedule; let i = index" class="schedule-entry">
-      <label for="employee_id">Employee ID:</label>
-      <input type="text" id="employee_id" name="employee_id" [(ngModel)]="schedule[i].employee_id" required>
-  
-      <label for="start_time">Start Time:</label>
-      <input type="text" id="start_time" name="start_time" [(ngModel)]="schedule[i].work_schedule.start_time" required>
-  
-      <label for="end_time">End Time:</label>
-      <input type="text" id="end_time" name="end_time" [(ngModel)]="schedule[i].work_schedule.end_time" required>
-  
-      <div *ngFor="let breakTime of schedule[i].work_schedule.breaks; let j = index" class="break-entry">
-        <label for="break_start_time">Break Start Time:</label>
-        <input type="text" id="break_start_time" name="break_start_time" [(ngModel)]="schedule[i].work_schedule.breaks[j].start_time" required>
-  
-        <label for="break_end_time">Break End Time:</label>
-        <input type="text" id="break_end_time" name="break_end_time" [(ngModel)]="schedule[i].work_schedule.breaks[j].end_time" required>
-      </div>
-    </div>
-  
-    <button type="submit">Submit</button>
-  </form>  
     </c-row>
   </c-container>

@@ -4,13 +4,16 @@ import { UsersRoutingModule } from './users-routing-module';
 import { UserDetailComponent } from './employees/user.component';
 import { CardModule, GridModule } from '@coreui/angular';
 import { FormModule } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { IconModule } from '@coreui/icons-angular';
 import { ButtonModule } from '@coreui/angular';
 import { TableModule } from '@coreui/angular';
 import { UsersListComponent } from './employees/users_list.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     UsersRoutingModule,
     CommonModule,
     GridModule,

@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class UserService {
     
     private _url: string = 'http://localhost:3500/users';
+    
     private headers = new HttpHeaders({
         'Authorization': localStorage.getItem('token') || ''
       });
@@ -31,5 +32,15 @@ export class UserService {
 
     login(userData: any){
         return this.http.post<any>(this._url+'/login', userData);
+    }
+
+    // saveUser(user: any){
+    //     return this.http.post<any>(this._url, user);
+    // }
+    saveUser(user: any){
+        return this.http.post<any>(this._url, user);
+      }
+    updateUser(user: any){
+        return this.http.put<any>(this._url+'/'+user._id, user);
     }
 }

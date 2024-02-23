@@ -5,9 +5,17 @@ import { ListServiceComponent } from './list-service/list-service.component';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ButtonGroupModule, ButtonModule, CardModule, DropdownModule, FormModule, GridModule, ListGroupModule, ModalModule, PopoverModule, SharedModule, TableModule, TooltipModule } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {SpecialOfferComponent} from './special-offers/special-offers.component'
+import { IconModule } from '@coreui/icons-angular';
+import { SpecialOfferListComponent } from './special-offers/special-offers-list.component';
 
 @NgModule({
+  declarations: [
+    SpecialOfferComponent,SpecialOfferListComponent,
+    FormServiceComponent,
+    ListServiceComponent,
+  ],
   imports: [
     ServicesRoutingModule,
     CommonModule,
@@ -23,11 +31,9 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     TableModule,
     ModalModule,PopoverModule,
-    TooltipModule
-  ],
-  declarations: [
-    FormServiceComponent,
-    ListServiceComponent
+    TooltipModule,
+    IconModule,
+    ReactiveFormsModule
   ],
 })
 export class ServicesModule {

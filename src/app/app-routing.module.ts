@@ -90,6 +90,11 @@ const routes: Routes = [
           import('./views/notifications/notifications.module').then((m) => m.NotificationsModule)
       },
       {
+        path: 'services',
+        loadChildren: () =>
+          import('./views/services/services.module').then((m) => m.ServicesModule)
+      },
+      {
         path: 'widgets',
         loadChildren: () =>
           import('./views/widgets/widgets.module').then((m) => m.WidgetsModule)
