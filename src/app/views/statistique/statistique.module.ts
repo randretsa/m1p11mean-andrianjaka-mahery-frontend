@@ -7,7 +7,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { SalesVolumeComponent } from './sales-volume/sales-volume.component';
 import { FormsModule } from '@angular/forms';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     StatistiqueRoutingModule,
@@ -17,7 +17,8 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
     GridModule,
     FormModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ReservationComponent,
