@@ -3,16 +3,24 @@
     <c-col xs="12" lg="9">
       <c-card class="mb-4">
         <c-card-header>
-          Bar Chart
+          Chiffre d'affaire
         </c-card-header>
         <c-card-body>
-          <form cForm class="row g-3">
-              <c-col md="9">
-                <select cSelect id="inputState" [(ngModel)]="by" name="by" (ngModelChange)="changeBy()">
+          <form cForm [formGroup]="filterForm" class="row g-3">
+              <c-row style="padding: 1%">
+              <c-col md="4">
+                <select cSelect formControlName="criteria" (ngModelChange)="onFilterChange()">
                     <option value="mois">Mois</option>
                     <option value="jour">Jour</option>
                 </select>
               </c-col>
+              <c-col md="4">
+                <select cSelect formControlName="year" (ngModelChange)="onFilterChange()">
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+              </c-col>
+            </c-row>
           </form>
           <c-chart type="bar" [data]="chart"></c-chart>
         </c-card-body>

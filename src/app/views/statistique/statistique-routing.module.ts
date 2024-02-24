@@ -17,13 +17,6 @@ const routes: Routes = [
         }
       },
       {
-        path: ':by',
-        component: ReservationComponent,
-        data: {
-          title: 'Reservation'
-        }
-      },
-      {
         path: 'sales-volume',
         component: SalesVolumeComponent,
         data: {
