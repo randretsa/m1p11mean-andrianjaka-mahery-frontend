@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReservationComponent } from './reservation/reservation.component';
-
+import {SalesVolumeComponent} from './sales-volume/sales-volume.component'
 const routes: Routes = [
   {
     path: '',
@@ -23,6 +23,13 @@ const routes: Routes = [
           title: 'Reservation'
         }
       },
+      {
+        path: 'sales-volume',
+        component: SalesVolumeComponent,
+        data: {
+          title: 'Chiffre d\'affaire'
+        }
+      }
     ]
   }
 ];

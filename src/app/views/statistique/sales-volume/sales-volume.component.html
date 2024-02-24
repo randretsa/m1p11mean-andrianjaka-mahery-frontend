@@ -1,0 +1,21 @@
+
+<c-row>
+    <c-col xs="12" lg="9">
+      <c-card class="mb-4">
+        <c-card-header>
+          Bar Chart
+        </c-card-header>
+        <c-card-body>
+          <form cForm class="row g-3">
+              <c-col md="9">
+                <select cSelect id="inputState" [(ngModel)]="by" name="by" (ngModelChange)="changeBy()">
+                    <option value="mois">Mois</option>
+                    <option value="jour">Jour</option>
+                </select>
+              </c-col>
+          </form>
+          <c-chart type="bar" [data]="chart"></c-chart>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
