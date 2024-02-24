@@ -24,7 +24,7 @@ export class SpecialOfferComponent implements OnInit{
     }
     //Listeners
     onCreate(){
-        const value = this.specialOfferForm.value; 
+        const value = this.specialOfferForm.value;
         const postData = {
             offerName: value.offerName,
             offerPrice:value.offerPrice,

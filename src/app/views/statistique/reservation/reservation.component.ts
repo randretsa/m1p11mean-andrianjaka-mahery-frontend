@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Observable, catchError, map, tap } from 'rxjs';
+import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 
 @Component({
   selector: 'app-reservation',
@@ -9,7 +11,9 @@ export class ReservationComponent implements OnInit{
 
   by = "mois"
   labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  data = [40, 20, 12, 39, 17, 42, 79, 14, 25, 48, 75, 49]
+  data = [0]
+  private appointmentService = inject(AppointmentService);
+
   chart = {
     labels: this.labels,
     datasets: [
@@ -22,7 +26,7 @@ export class ReservationComponent implements OnInit{
   };
 
   ngOnInit(): void {
-    this.loadChart()
+    this.loadDataMonth();
   }
 
   loadChart(){
@@ -38,15 +42,29 @@ export class ReservationComponent implements OnInit{
     }
   }
 
-  changeBy(){
-    if(this.by=="jour"){
-      this.labels = ['Lundi', 'Mardi']
-      this.data = [78, 65]
+  loadDataMonth(){
+    this.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    this.appointmentService.getAppointmentByMonth().subscribe({
+      next: (datas:any)=>{
+        this.data = datas;
+        this.loadChart();
+      },
+      error: (error) => console.log('Error fetching services',error)
+    });
+  }
+
+  loadDataDay(){
+    this.labels = ['Lundi', 'Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
+    this.data = [78, 65]
+    this.loadChart();
+  }
+
+  changeBy() {
+    if (this.by == "jour") {
+      this.loadDataDay();
     } else {
-      this.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      this.data = [40, 20, 12, 39, 17, 42, 79, 14, 25, 48, 75, 49]
+      this.loadDataMonth();
     }
-    this.loadChart()
   }
 
 }

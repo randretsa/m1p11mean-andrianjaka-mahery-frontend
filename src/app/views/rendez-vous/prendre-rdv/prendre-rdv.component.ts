@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ServicesService } from '../../../services/services/services.service';
 import { UserService } from 'src/app/services/user.services';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
+import { FormArray, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-prendre-rdv',
@@ -10,12 +11,18 @@ import { AppointmentService } from 'src/app/services/appointment/appointment.ser
 })
 export class PrendreRdvComponent implements OnInit{
 
-  appointmentInfo = {
-    date: new Date(),
-    heure: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    employe: '',
-    services: [],
-    rappel: 0
+  constructor(private formBuilder: FormBuilder){}
+
+  appointmentForm = this.formBuilder.group({
+    date: [''],
+    heure: [''],
+    employe: [''],
+    services: this.formBuilder.array([]),
+    rappel: ['']
+  });
+
+  get services(){
+    return this.appointmentForm.get('services') as FormArray;
   }
 
   serviceList: any = [];
@@ -33,6 +40,11 @@ export class PrendreRdvComponent implements OnInit{
     this.serviceService.getAllServices().subscribe({
       next: (services:any)=>{
         this.serviceList = services;
+        for (let index = 0; index < this.serviceList.length; index++) {
+          this.services.push(this.formBuilder.group({
+            service_id: this.serviceList[index]._id
+          }));
+        }
       },
       error: (error) => console.log('Error fetching services',error)
     });
@@ -48,8 +60,25 @@ export class PrendreRdvComponent implements OnInit{
   }
 
   createAppointment(){
-    console.log(this.appointmentInfo);
-    this.appointmentService.createAppointment(this.appointmentInfo).subscribe({
+    let id = localStorage.getItem('_id') || ''
+    const value = this.appointmentForm.value;
+    const serviceValue:any = value.services?.map((service: any) =>{ return service.service_id });
+    const realServ = []
+    for (let i=0;i<serviceValue.length;i++){
+      if(serviceValue[i]!=false){
+        realServ.push(serviceValue[i])
+      }
+    }
+    const appointmentInfo = {
+      date: value.date,
+      heure: value.heure,
+      employe: value.employe,
+      customer: id,
+      services: realServ,
+      rappel: value.rappel,
+    }
+    console.log(appointmentInfo);
+    this.appointmentService.createAppointment(appointmentInfo).subscribe({
       next: (appointment:any)=>{
         console.log(appointment);
       },

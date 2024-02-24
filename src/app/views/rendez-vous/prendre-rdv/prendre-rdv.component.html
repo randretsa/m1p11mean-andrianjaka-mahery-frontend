@@ -5,18 +5,18 @@
           <strong>Prendre rendez-vous</strong>
         </c-card-header>
         <c-card-body>
-            <form cForm class="row g-3" (submit)="createAppointment()">
+            <form cForm class="row g-3" form [formGroup]="appointmentForm" cForm>
                 <c-col md="12">
                     <label cLabel for="inputDate">Date</label>
-                    <input cFormControl id="inputDate" [(ngModel)]="appointmentInfo.date" type="date" name="date"/>
+                    <input autoComplete="date" cFormControl formControlName="date" type="date"/>
                 </c-col>
                 <c-col md="12">
                     <label cLabel for="inputHeure">Heure</label>
-                    <input cFormControl id="inputHeure" [(ngModel)]="appointmentInfo.heure" type="time" name="heure"/>
+                    <input autoComplete="heure" cFormControl formControlName="heure" type="time"/>
                 </c-col>
                 <c-col md="12">
                     <label cLabel for="inputState">Employe</label>
-                    <select cSelect id="inputState" [(ngModel)]="appointmentInfo.employe" name="employe">
+                    <select cSelect id="inputState" cFormControl formControlName="employe">
                         @for (employe of employeList; track $index){
                             <option [value]="employe._id">{{ employe.firstName }} {{ employe.lastName }}</option>
                         } @empty {
@@ -26,19 +26,18 @@
                 </c-col>
                 <c-col xs="12">
                     <label cLabel for="inputState">Services</label>
-                    @for (service of serviceList; track $index) {
-                        <c-form-check>
-                            <input cFormCheckInput id="gridCheck" name="gridCheck" type="checkbox" value="{{ service._id }}" name="services[]"/>
-                            <label cFormCheckLabel for="gridCheck">{{ service.name }}</label>
-                        </c-form-check>
-                    }
-                    @empty {
-                        No services
-                    }
+                    <div formArrayName="services">
+                        <c-row *ngFor="let service of services.controls; let i=index" [formGroupName]="i">
+                            <c-form-check>
+                                <input cFormCheckInput id="service-{{ i }}" type="checkbox" formControlName="service_id"/>
+                                <label cFormCheckLabel for="service-{{ i }}">{{serviceList[i].name}}</label>
+                            </c-form-check>
+                        </c-row>
+                    </div>
                 </c-col>
                 <c-col md="12">
                     <label cLabel for="inputState">Rappel</label>
-                    <select cSelect id="inputState" [(ngModel)]="appointmentInfo.rappel" name="rappel">
+                    <select cSelect id="inputState"  cFormControl formControlName="rappel">
                         <option [value]="2">2 heures</option>
                         <option [value]="3">3 heures</option>
                         <option [value]="5">5 heures</option>
@@ -46,7 +45,7 @@
                     </select>
                 </c-col>
                 <c-col xs="12">
-                    <button cButton type="submit">Valider</button>
+                    <button cButton type="submit"  (click)="createAppointment()">Valider</button>
                 </c-col>
             </form>
         </c-card-body>

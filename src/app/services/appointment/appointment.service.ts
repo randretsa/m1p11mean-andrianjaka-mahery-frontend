@@ -36,4 +36,8 @@ export class AppointmentService {
   createAppointment(appointment:any){
     return this.http.post<any>(this.endpointURL,appointment);
   }
+
+  getAppointmentByMonth(){
+    return this.http.get(this.endpointURL+"/stat/reservation");
+  }
 }

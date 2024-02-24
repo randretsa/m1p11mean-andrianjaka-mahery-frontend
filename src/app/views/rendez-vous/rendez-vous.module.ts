@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RendezVousRoutingModule } from './rendez-vous-routing.module';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ButtonGroupModule, ButtonModule, CardModule, DropdownModule, FormModule, GridModule, ListGroupModule, ModalModule, PopoverModule, SharedModule, TableModule, TooltipModule } from '@coreui/angular';
-import { FormsModule } from '@angular/forms';
+import { ButtonModule, CardModule, DropdownModule, FormModule, GridModule, ListGroupModule, ModalModule, PopoverModule, SharedModule, TableModule, TooltipModule } from '@coreui/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrendreRdvComponent } from './prendre-rdv/prendre-rdv.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { DetailComponent } from './detail/detail.component';
@@ -24,7 +24,8 @@ import { TacheComponent } from './tache/tache.component';
     ListGroupModule,
     FormsModule,
     TableModule,
-    ModalModule
+    ModalModule,
+    ReactiveFormsModule
   ],
   declarations: [
     PrendreRdvComponent,
