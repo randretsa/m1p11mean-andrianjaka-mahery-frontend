@@ -366,6 +366,10 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
           {
             name: 'Réservation',
             url: '/statistique'
+          },
+          {
+            name: 'Chiffre d\'affaire',
+            url: '/statistique/sales-volume'
           }
         ]
       },
