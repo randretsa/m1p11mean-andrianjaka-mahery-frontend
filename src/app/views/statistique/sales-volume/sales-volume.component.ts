@@ -14,7 +14,7 @@ export class SalesVolumeComponent implements OnInit{
     datasets: [
       {
         label: 'GitHub Commits',
-        backgroundColor: '#f87979',
+        backgroundColor: '#21DA3A',
         data: this.data
       }
     ]
@@ -30,7 +30,7 @@ export class SalesVolumeComponent implements OnInit{
       datasets: [
         {
           label: 'Valeur',
-          backgroundColor: '#f87979',
+          backgroundColor: '#21DA3A',
           data: this.data
         }
       ]

@@ -365,11 +365,15 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
         children:[
           {
             name: 'Réservation',
-            url: '/statistique'
+            url: '/statistique/reservation'
           },
           {
             name: 'Chiffre d\'affaire',
             url: '/statistique/sales-volume'
+          },
+          {
+            name: 'Horaire Employe',
+            url: '/statistique/work-schedule'
           }
         ]
       },

@@ -40,4 +40,16 @@ export class AppointmentService {
   getAppointmentByMonth(){
     return this.http.get(this.endpointURL+"/stat/reservation");
   }
+
+  getAppointmentByWeek(){
+    return this.http.get(this.endpointURL+"/stat/reservation/jour");
+  }
+
+  getEmployeScheduleByMonth(){
+    return this.http.get(this.endpointURL+"/stat/schedule");
+  }
+
+  getEmployeScheduleByWeek(){
+    return this.http.get(this.endpointURL+"/stat/schedule/jour");
+  }
 }

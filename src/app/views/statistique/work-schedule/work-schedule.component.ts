@@ -2,11 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 
 @Component({
-  selector: 'app-reservation',
-  templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.scss'
+  selector: 'app-work-schedule',
+  templateUrl: './work-schedule.component.html',
+  styleUrl: './work-schedule.component.scss'
 })
-export class ReservationComponent implements OnInit{
+export class WorkScheduleComponent implements OnInit{
 
   by = "mois"
   labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -34,7 +34,7 @@ export class ReservationComponent implements OnInit{
       datasets: [
         {
           label: 'Valeur',
-          backgroundColor: '#f87979',
+          backgroundColor: '#21C6DA',
           data: this.data
         }
       ]
@@ -43,7 +43,7 @@ export class ReservationComponent implements OnInit{
 
   loadDataMonth(){
     this.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    this.appointmentService.getAppointmentByMonth().subscribe({
+    this.appointmentService.getEmployeScheduleByMonth().subscribe({
       next: (datas:any)=>{
         this.data = datas;
         this.loadChart();
@@ -54,7 +54,7 @@ export class ReservationComponent implements OnInit{
 
   loadDataDay(){
     this.labels = ['Lundi', 'Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
-    this.appointmentService.getAppointmentByWeek().subscribe({
+    this.appointmentService.getEmployeScheduleByWeek().subscribe({
       next: (datas:any)=>{
         this.data = datas;
         this.loadChart();

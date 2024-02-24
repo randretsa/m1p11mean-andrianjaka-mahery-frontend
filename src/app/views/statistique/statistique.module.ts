@@ -6,6 +6,7 @@ import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angula
 import { ReservationComponent } from './reservation/reservation.component';
 import { SalesVolumeComponent } from './sales-volume/sales-volume.component';
 import { FormsModule } from '@angular/forms';
+import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     ReservationComponent,
-    SalesVolumeComponent
+    SalesVolumeComponent,
+    WorkScheduleComponent
   ],
 })
 export class StatistiqueModule {
