@@ -1,8 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ButtonModule, CardModule, GridModule, TableModule } from '@coreui/angular';
 import { AppointmentService } from '../../../services/appointment/appointment.service';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-historique',
