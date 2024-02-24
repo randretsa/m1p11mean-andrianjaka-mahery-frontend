@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StatsService {
     
-    private _url: string = 'http://localhost:3500/stats/sales-volume';
+    private _url: string = 'http://localhost:3500/stats/';
     
     private headers = new HttpHeaders({
         'Authorization': localStorage.getItem('token') || ''
@@ -15,6 +15,10 @@ export class StatsService {
     constructor(private http: HttpClient){}
 
     getSalesVolumeByMonth(): Observable<any[]>{
-        return this.http.get<any> (this._url);
+        return this.http.get<any> (this._url+"sales-volume");
+    }
+
+    getDailySalesVolume(): Observable<any[]>{
+        return this.http.get<any> (this._url+"daily-sales-volume");
     }
 }

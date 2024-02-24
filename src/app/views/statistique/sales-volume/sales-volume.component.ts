@@ -32,7 +32,11 @@ export class SalesVolumeComponent implements OnInit{
 // Listeners
 onFilterChange(){
   const criteria = this.filterForm.value;
-  this.getMonthly(criteria.year);
+  if(criteria.criteria=="mois"){
+    this.getMonthly(criteria.year);
+  }else{
+    this.getDaily(criteria.year)
+  }
 }
 
 loadChart(labels: any, data: any){
@@ -40,7 +44,7 @@ this.chart = {
   labels: labels,
   datasets: [
     {
-      label: 'GitHub Commits',
+      label: 'Chiffre d\'affaires',
       backgroundColor: '#f87979',
       data: data
     }
@@ -50,7 +54,7 @@ this.chart = {
 
 getMonthly(year: string | any){
   this.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-  this.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  this.labels = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
   this.statsService.getSalesVolumeByMonth().subscribe(
     results => {
       for (let index = 0; index < results.length; index++) {
@@ -62,7 +66,19 @@ getMonthly(year: string | any){
   );
 }
   // Loading data for the stats
-  
+getDaily(year: string | any){
+  this.data = [0, 0, 0, 0, 0, 0, 0]
+  this.labels = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+  this.statsService.getDailySalesVolume().subscribe(
+    results => {
+      for (let index = 0; index < results.length; index++) {
+        if(results[index].year == year) this.data[results[index].dayOfWeek-1] = results[index].totalServicesPrice;
+      }
+
+      this.loadChart(this.labels, this.data);
+    }
+  );
+}
   constructor(private formBuilder: FormBuilder){}
 
   ngOnInit(): void {
