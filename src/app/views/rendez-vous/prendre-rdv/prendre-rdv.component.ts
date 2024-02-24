@@ -3,14 +3,15 @@ import { ServicesService } from '../../../services/services/services.service';
 import { UserService } from 'src/app/services/user.services';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 import { FormArray, FormBuilder } from '@angular/forms';
-
+import { NotificationService } from 'src/app/services/notifications/notification.service';
 @Component({
   selector: 'app-prendre-rdv',
   templateUrl: './prendre-rdv.component.html',
   styleUrl: './prendre-rdv.component.scss'
 })
 export class PrendreRdvComponent implements OnInit{
-
+  notificationService: NotificationService = inject(NotificationService);
+  
   constructor(private formBuilder: FormBuilder){}
 
   appointmentForm = this.formBuilder.group({
@@ -34,6 +35,10 @@ export class PrendreRdvComponent implements OnInit{
   ngOnInit(): void {
     this.loadServices();
     this.loadEmploye();
+    this.notificationService.requestForNotification().subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    );
   }
 
   loadServices(){

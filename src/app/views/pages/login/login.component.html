@@ -4,7 +4,24 @@
       <c-col md="8">
         <c-card-group>
           <c-card class="p-4">
-            <c-card-body>
+            <c-card-body>             
+              <c-row>
+                <c-col class="text-right" xs="4">
+                  <button cButton class="px-0" color="danger" (click)="connectParams('ADMIN')">
+                    connect as admin
+                  </button>
+                </c-col>
+                <c-col class="text-right" xs="4">
+                  <button cButton class="px-0" color="primary" (click)="connectParams('CLIENT')">
+                    connect as client
+                  </button>
+                </c-col>
+                <c-col class="text-right" xs="4">
+                  <button cButton class="px-0" color="warning" (click)="connectParams('EMPLOYEE')">
+                    connect as employee
+                  </button>
+                </c-col>
+              </c-row>
               <form cForm #loginForm="ngForm" (submit)="submitLogin()"> 
                 <h1>Login</h1>
                 <p class="text-medium-emphasis">Sign In to your account</p>
@@ -27,15 +44,13 @@
                     name="password"
                   />
                 </c-input-group>
+              <c-row *ngIf="loadingProgress">
+                  <mat-spinner></mat-spinner>
+              </c-row>
                 <c-row>
-                  <c-col xs="6">
+                  <c-col xs="4">
                     <button type="submit" cButton class="px-4" color="primary">
                       Login
-                    </button>
-                  </c-col>
-                  <c-col class="text-right" xs="6">
-                    <button cButton class="px-0" color="link">
-                      Forgot password?
                     </button>
                   </c-col>
                 </c-row>

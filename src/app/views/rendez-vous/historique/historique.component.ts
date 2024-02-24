@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AppointmentService } from '../../../services/appointment/appointment.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { NotificationService } from 'src/app/services/notifications/notification.service';
 
 @Component({
   selector: 'app-historique',
@@ -10,13 +11,17 @@ import { Router } from '@angular/router';
 export class HistoriqueComponent implements OnInit{
 
   appoitmentList: any = [];
-
+  notificationService: NotificationService = inject(NotificationService);
   private appointmentService = inject(AppointmentService);
   constructor(private router: Router){}
 
   ngOnInit(): void {
     let id = localStorage.getItem('_id') || ''
     this.loadHistorique(id);
+    this.notificationService.requestForNotification().subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    );
   }
 
   loadHistorique(id:string){
