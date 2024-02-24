@@ -5,7 +5,7 @@ import { ServicesService } from 'src/app/services/services/services.service';
 import { UserService } from 'src/app/services/user.services';
 import { PreferencesService } from 'src/app/services/preferences/preferences.service';
 import { FormsModule } from '@angular/forms';
-
+import { NotificationService } from 'src/app/services/notifications/notification.service';
 @Component({
   selector: 'app-preferences',
   standalone: true,
@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './preferences.component.scss'
 })
 export class PreferencesComponent implements OnInit{
-
+  notificationService: NotificationService = inject(NotificationService);
   serviceList: any = [];
   employeList: any = [];
   preference = {
@@ -34,6 +34,10 @@ export class PreferencesComponent implements OnInit{
 
   ngOnInit(): void {
     this.loadPage();
+    this.notificationService.requestForNotification().subscribe(
+      data => console.log(data),
+      err => console.log(err)
+    );
   }
 
   loadPage(){

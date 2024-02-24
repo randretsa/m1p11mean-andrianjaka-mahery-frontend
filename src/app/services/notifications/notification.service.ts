@@ -16,4 +16,8 @@ export class NotificationService {
       acceptSubscription(subscription: any){
         return this.http.post<any>(this._url, subscription, {headers: this.headers});
       }
+
+      requestForNotification(){
+        return this.http.get<any>(this._url);
+      }
 }
