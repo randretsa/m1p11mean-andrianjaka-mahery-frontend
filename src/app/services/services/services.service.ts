@@ -1,12 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
-  baseUrl = "http://localhost:3500"
-  endpointURL = this.baseUrl+"/services";
+
+  endpointURL = environment.apiUrl+"services";
 
   private http = inject(HttpClient)
 

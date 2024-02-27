@@ -1,11 +1,12 @@
 import {Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environment';
 @Injectable({
     providedIn: 'root'
 })
 export class NotificationService {
-    private _url: string = 'http://localhost:3500/notification';
+    private _url: string = environment.apiUrl+'notification';
     
     private headers = new HttpHeaders({
         'Authorization': localStorage.getItem('token') || ''

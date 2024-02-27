@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-
+import { environment } from '../environment';
 @Injectable({
   providedIn: 'root'
 })
 export class PreferencesService {
-  baseUrl = "http://localhost:3500"
-  endpointURL = this.baseUrl+"/preferences";
+
+  endpointURL = environment.apiUrl+"preferences";
 
   private http = inject(HttpClient)
 

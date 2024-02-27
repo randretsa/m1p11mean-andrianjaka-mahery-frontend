@@ -2,13 +2,13 @@ import {Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {IWorkSchedule} from '../types/work_schedule';
-
+import { environment } from './environment';
 @Injectable({
     providedIn: 'root'
 })
 export class WorkScheduleService {
     
-    private _url: string = 'http://localhost:3500/work_schedule';
+    private _url: string = environment.apiUrl+'work_schedule';
     private headers = new HttpHeaders({
         'Authorization': localStorage.getItem('token') || ''
       });
