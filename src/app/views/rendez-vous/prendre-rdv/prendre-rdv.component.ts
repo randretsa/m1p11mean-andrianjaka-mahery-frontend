@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.services';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 import { FormArray, FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notifications/notification.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-prendre-rdv',
   templateUrl: './prendre-rdv.component.html',
@@ -12,7 +13,7 @@ import { NotificationService } from 'src/app/services/notifications/notification
 export class PrendreRdvComponent implements OnInit{
   notificationService: NotificationService = inject(NotificationService);
   
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder,private router: Router){}
 
   appointmentForm = this.formBuilder.group({
     date: [''],
@@ -86,6 +87,7 @@ export class PrendreRdvComponent implements OnInit{
     this.appointmentService.createAppointment(appointmentInfo).subscribe({
       next: (appointment:any)=>{
         console.log(appointment);
+        this.router.navigate(['rendez-vous/historique']);
       },
       error: (error) => console.log('Error fetching employee',error)
     });
