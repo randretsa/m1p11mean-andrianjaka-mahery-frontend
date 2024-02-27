@@ -5,6 +5,10 @@
         <strong>Liste des rendez-vous</strong>
       </c-card-header>
       <c-card-body>
+        <div *ngIf="loadingProgress; else otherContent">
+          <mat-spinner></mat-spinner>
+        </div>
+        <ng-template #otherContent>
         <table [hover]="true" [striped]="true" cTable>
           <thead>
             <tr>
@@ -34,6 +38,7 @@
             </tr>
           </tbody>
         </table>
+      </ng-template>
       </c-card-body>
     </c-card>
   </c-col>

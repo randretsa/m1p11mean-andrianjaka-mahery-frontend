@@ -11,7 +11,7 @@ export class ListeComponent implements OnInit{
 
   appoitmentList: any = [];
   constructor(private router: Router){}
-
+  loadingProgress = true;
   private appointmentService = inject(AppointmentService);
 
   ngOnInit(): void {
@@ -23,6 +23,7 @@ export class ListeComponent implements OnInit{
     this.appointmentService.getAppoitmentList(id).subscribe({
       next: (appointments:any)=>{
         this.appoitmentList = appointments;
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });

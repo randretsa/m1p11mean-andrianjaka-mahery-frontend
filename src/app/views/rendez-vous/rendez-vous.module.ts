@@ -10,7 +10,7 @@ import { DetailComponent } from './detail/detail.component';
 import { ListeComponent } from './liste/liste.component';
 import { DetailTacheComponent } from './detail-tache/detail-tache.component';
 import { TacheComponent } from './tache/tache.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     RendezVousRoutingModule,
@@ -25,7 +25,8 @@ import { TacheComponent } from './tache/tache.component';
     FormsModule,
     TableModule,
     ModalModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     PrendreRdvComponent,
