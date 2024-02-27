@@ -12,7 +12,7 @@
                     <label cLabel for="inputState">Depenses</label>
                     <select cSelect id="inputState" [(ngModel)]="depenseInfo.name" name="name">
                       @for (depense of depenseList; track $index) {
-                        <option [value]="depense._id">{{ depense.name }}</option>
+                        <option [value]="depense.name">{{ depense.name }}</option>
                       }
                       @empty {
                         No depenses
@@ -46,15 +46,23 @@
               </tr>
               </thead>
               <tbody>
+                @for (depense of depenseTab; track $index) {
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Salaire</td>
-                    <td>1000 Ariary</td>
-                    <td><button states="normal" color="danger" cButton>Supprimer</button></td>
+                    <th scope="row">{{ $index+1 }}</th>
+                    <td>{{ depense.name }}</td>
+                    <td>{{ depense.price }} Ariary</td>
+                    <td><button states="normal" color="danger" (click)="removeDepense($index)" cButton>Supprimer</button></td>
                   </tr>
+                }
+                <tr>
+                  <th scope="row">Total</th>
+                  <td></td>
+                  <td>{{ calculeDepense() }} Ariary</td>
+                  <td></td>
+                </tr>
               </tbody>
             </table>
-            <button states="normal" color="success" cButton>Estimer</button>
+            <button states="normal" color="success" (click)="estimer()" cButton>Estimer</button>
         </c-card-body>
       </c-card>
     </c-col>

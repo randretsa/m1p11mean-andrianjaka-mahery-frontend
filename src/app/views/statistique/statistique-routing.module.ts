@@ -4,6 +4,7 @@ import { ReservationComponent } from './reservation/reservation.component';
 import {SalesVolumeComponent} from './sales-volume/sales-volume.component'
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { DepenseComponent } from './depense/depense.component';
+import { BeneficeComponent } from './benefice/benefice.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,14 @@ const routes: Routes = [
         data: {
           title: 'Depense'
         }
-      }
+      },
+      {
+        path: 'depense/benefice/:somme',
+        component: BeneficeComponent,
+        data: {
+          title: 'Benefice'
+        }
+      },
     ]
   }
 ];
