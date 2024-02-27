@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DepenseComponent } from './depense/depense.component';
+import { BeneficeComponent } from './benefice/benefice.component';
 @NgModule({
   imports: [
     StatistiqueRoutingModule,
@@ -26,7 +27,8 @@ import { DepenseComponent } from './depense/depense.component';
     ReservationComponent,
     SalesVolumeComponent,
     WorkScheduleComponent,
-    DepenseComponent
+    DepenseComponent,
+    BeneficeComponent
   ],
 })
 export class StatistiqueModule {
