@@ -56,4 +56,12 @@ export class AppointmentService {
   searchAppointment(appointment:any){
     return this.http.post(this.endpointURL+"/search",appointment);
   }
+
+  getAppointmentAchiement(id:string,appointment:any){
+    return this.http.post(this.endpointURL+"/achivement/"+id,appointment);
+  }
+
+  updateAppointmentEtat(id:string,appointment:any){
+    return this.http.put(this.endpointURL+"/achivement/"+id,appointment);
+  }
 }

@@ -335,6 +335,10 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
           {
             name: 'Tache & Commission',
             url: '/rendez-vous/task'
+          },
+          {
+            name: 'Etat',
+            url: '/rendez-vous/achievement'
           }
         ]
       }

@@ -6,6 +6,7 @@ import { DetailComponent } from './detail/detail.component';
 import { ListeComponent } from './liste/liste.component';
 import { TacheComponent } from './tache/tache.component';
 import { DetailTacheComponent } from './detail-tache/detail-tache.component';
+import { DragAndDropComponent } from './drag_and_drop/drag-and-drop.component';
 
 const routes: Routes = [
   {
@@ -78,6 +79,13 @@ const routes: Routes = [
         component: DetailTacheComponent,
         data: {
           title: 'Détail rendez-vous'
+        },
+      },
+      {
+        path: 'achievement',
+        component: DragAndDropComponent,
+        data: {
+          title: 'Etat'
         },
       },
     ]

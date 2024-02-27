@@ -1,6 +1,4 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ButtonModule, CardModule, GridModule, TableModule } from '@coreui/angular';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
 import { Router } from '@angular/router';
 
