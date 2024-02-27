@@ -1,30 +1,39 @@
+<style>
+  .px-0{
+    min-width: 100px;
+    background-color: white;
+    border: 1px;
+    border-style: solid;
+  }
+</style>
 <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
     <c-row class="justify-content-center">
       <c-col md="8">
         <c-card-group>
           <c-card class="p-4">
-            <c-card-body>             
-              <c-row>
-                <c-col class="text-right" xs="4">
-                  <button cButton class="px-0" color="danger" (click)="connectParams('ADMIN')">
-                    connect as admin
+            <c-card-body>
+              <h1>Login</h1>
+              <p class="text-medium-emphasis">Choisi une option de connection</p>             
+              <c-row style="margin-bottom: 5%;">
+                <c-col xs="4">
+                  <button cButton class="px-0" (click)="connectParams('ADMIN')">
+                    admin
                   </button>
                 </c-col>
-                <c-col class="text-right" xs="4">
-                  <button cButton class="px-0" color="primary" (click)="connectParams('CLIENT')">
-                    connect as client
+                <c-col xs="4">
+                  <button cButton class="px-0" (click)="connectParams('CLIENT')">
+                    client
                   </button>
                 </c-col>
-                <c-col class="text-right" xs="4">
-                  <button cButton class="px-0" color="warning" (click)="connectParams('EMPLOYEE')">
-                    connect as employee
+                <c-col xs="4">
+                  <button cButton class="px-0" (click)="connectParams('EMPLOYEE')">
+                    employee
                   </button>
                 </c-col>
               </c-row>
               <form cForm #loginForm="ngForm" (submit)="submitLogin()"> 
-                <h1>Login</h1>
-                <p class="text-medium-emphasis">Sign In to your account</p>
+
                 <c-input-group class="mb-3">
                   <span cInputGroupText>
                     <svg cIcon name="cilUser"></svg>
@@ -60,13 +69,13 @@
           <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
             <c-card-body class="text-center">
               <div>
-                <h2>Sign up</h2>
-                <p>
+                <h2>S'inscrire</h2>
+                <!-- <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                   tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+                </p> -->
                 <button [active]="true" cButton class="mt-3" color="primary" routerLink="/register">
-                  Register Now!
+                  s'inscrire maintenant!
                 </button>
               </div>
             </c-card-body>

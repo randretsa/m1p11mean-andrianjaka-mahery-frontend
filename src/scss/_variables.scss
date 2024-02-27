@@ -65,7 +65,7 @@ $gray-base: #3c4b64;
 // scss-docs-end colors-map
 
 // $primary-dark:  #1f1498;
-// $primary:       #321fdb;
+$primary:       #D9A689;
 // $primary-50:    #988fed;
 // $primary-25:    #ccc7f6;
 
@@ -80,7 +80,7 @@ $gray-base: #3c4b64;
 // $success-25:    #cbedd6;
 
 // $info-dark:  #2982cc;
-// $info:       #39f;
+$info:       #D9A689;
 // $info-50:    #80c6ff;
 // $info-25:    #c0e6ff;
 
@@ -1547,7 +1547,7 @@ $sidebar-bg:                                #ffffff;
 
 // $sidebar-brand-height:                     4rem;
 // $sidebar-brand-color:                      $high-emphasis-light;
-// $sidebar-brand-bg:                         rgba($black, .2);
+$sidebar-brand-bg:                         $sidebar-bg;
 
 // $sidebar-header-height:                    4rem;
 // $sidebar-header-padding-y:                 .75rem;
@@ -1575,12 +1575,12 @@ $sidebar-nav-link-transition:              background .15s ease, color .15s ease
 $sidebar-nav-link-icon-color:              $medium-emphasis-light;
 
 // $sidebar-nav-link-hover-color:             $high-emphasis-light;
-$sidebar-nav-link-hover-bg:                #F2CCB6;
+$sidebar-nav-link-hover-bg:                #D9A689;
 // $sidebar-nav-link-hover-icon-color:        $high-emphasis-light;
 
 $sidebar-nav-link-active-color:            #0D0D0D;
 // $sidebar-nav-link-active-bg:               rgba($white, .05);
-// $sidebar-nav-link-active-icon-color:       $high-emphasis-light;
+$sidebar-nav-link-active-icon-color:       $high-emphasis-light;
 
 // $sidebar-nav-link-disabled-color:          $disabled-light;
 // $sidebar-nav-link-disabled-icon-color:     $sidebar-nav-link-icon-color;
@@ -1603,11 +1603,11 @@ $sidebar-nav-group-toggle-show-color:      $sidebar-nav-link-color;
 // $sidebar-footer-height:                    auto;
 // $sidebar-footer-padding-y:                 .75rem;
 // $sidebar-footer-padding-x:                 1rem;
-// $sidebar-footer-bg:                        rgba($black, .2);
+$sidebar-footer-bg:                        #D9A689;
 // $sidebar-footer-height-transition:         height .15s, padding .15s;
 
 // $sidebar-toggler-height:                   3rem;
-// $sidebar-toggler-bg:                       rgba($black, .2);
+$sidebar-toggler-bg:                       #D9A689;
 // $sidebar-toggler-transition:               transform .15s;
 
 // $sidebar-toggler-indicator-width:          4rem;
