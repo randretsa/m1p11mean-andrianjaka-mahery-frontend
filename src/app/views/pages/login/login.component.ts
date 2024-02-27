@@ -29,7 +29,7 @@ export class LoginComponent {
         if (user.privilege.code=="CLIENT"){
           this.router.navigate(['rendez-vous/prendre']);
         } else if (user.privilege.code=="EMPLOYEE"){
-          this.router.navigate(['rendez-vous/list']);
+          this.router.navigate(['service']);
         } else if(user.privilege.code=="MANAGER"){
           this.router.navigate(['/users/user-list']);
         }

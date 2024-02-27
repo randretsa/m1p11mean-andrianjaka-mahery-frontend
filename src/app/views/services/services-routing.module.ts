@@ -14,8 +14,10 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
-        redirectTo: 'coreui-icons'
+        component: ListServiceComponent,
+        data: {
+          title: 'List'
+        }
       },
       {
         path: 'list',

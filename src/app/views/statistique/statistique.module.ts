@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { StatistiqueRoutingModule } from './statistique-routing.module';
 import { CommonModule } from '@angular/common';
 import { ChartjsModule } from '@coreui/angular-chartjs';
-import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
+import { ButtonModule, CardModule, FormModule, GridModule, TableModule } from '@coreui/angular';
 import { ReservationComponent } from './reservation/reservation.component';
 import { SalesVolumeComponent } from './sales-volume/sales-volume.component';
 import { FormsModule } from '@angular/forms';
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DepenseComponent } from './depense/depense.component';
 @NgModule({
   imports: [
     StatistiqueRoutingModule,
@@ -18,12 +19,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormModule,
     FormsModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
   declarations: [
     ReservationComponent,
     SalesVolumeComponent,
-    WorkScheduleComponent
+    WorkScheduleComponent,
+    DepenseComponent
   ],
 })
 export class StatistiqueModule {

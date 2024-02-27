@@ -1,11 +1,47 @@
 <c-row ngPreserveWhitespaces>
+
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Filtre de recherche</strong>
+      </c-card-header>
+      <c-card-body>
+          <form cForm class="row gx-3 gy-2 align-items-center" (submit)="searchAppointment()">
+            <c-col sm="2">
+                <input cFormControl placeholder="Date" [(ngModel)]="appointmentInfo.date" type="date" name="date"/>
+            </c-col>
+            <c-col sm="2">
+                <input cFormControl placeholder="Heure" [(ngModel)]="appointmentInfo.heure" type="time" name="heure"/>
+            </c-col>
+            <c-col sm="3">
+              <select cSelect id="inputState" [(ngModel)]="appointmentInfo.employe" name="employe">
+                @for (employe of employeList; track $index){
+                    <option [value]="employe._id">{{ employe.firstName }} {{ employe.lastName }}</option>
+                } @empty {
+                    No employe
+                }
+              </select>
+            </c-col>
+            <c-col sm="3">
+              <select cSelect id="inputState" [(ngModel)]="appointmentInfo.ispayed" name="ispayed">
+                <option value=1>Payé</option>
+                <option value=0>Non Payé</option>
+              </select>
+            </c-col>
+            <c-col xs="2">
+              <button cButton type="submit">Rechercher</button>
+            </c-col>
+          </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
     <c-col xs="12">
       <c-card class="mb-4">
         <c-card-header>
           <strong>Historique des rendez-vous</strong>
         </c-card-header>
         <c-card-body>
-            <table [hover]="true" [striped]="true" cTable>
+          <table #dataTable [hover]="true" [striped]="true" cTable>
               <thead>
               <tr>
                 <th scope="col">#</th>
@@ -23,7 +59,7 @@
                     <th scope="row">{{ $index+1 }}</th>
                     <td>{{ appointment.date }}</td>
                     <td>{{ appointment.heure }}</td>
-                    <td>{{ appointment.customer.firstName }} {{ appointment.customer.lastName }}</td>
+                    <td>{{ appointment.employe.firstName }} {{ appointment.employe.lastName }}</td>
                     <td>{{ calculateSommeService(appointment) }} Ar</td>
                     <td><button states="normal" color="info" cButton (click)="detailAppointment(appointment)">Détail</button></td>
                     <td>

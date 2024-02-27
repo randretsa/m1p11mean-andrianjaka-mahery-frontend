@@ -30,4 +30,8 @@ export class ServicesService {
     return this.http.get(this.endpointURL+"/"+id);
   }
 
+  searchService(service:any){
+    return this.http.post<any>(this.endpointURL+"/search", service);
+  }
+
 }

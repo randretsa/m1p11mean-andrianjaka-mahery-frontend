@@ -52,4 +52,8 @@ export class AppointmentService {
   getEmployeScheduleByWeek(){
     return this.http.get(this.endpointURL+"/stat/schedule/jour");
   }
+
+  searchAppointment(appointment:any){
+    return this.http.post(this.endpointURL+"/search",appointment);
+  }
 }

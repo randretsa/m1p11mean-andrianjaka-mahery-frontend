@@ -16,8 +16,15 @@ export class ListServiceComponent implements OnInit{
 
   constructor(public dialog: MatDialog){}
 
+  serviceInfo = {
+    name:null,
+    price:null,
+    duration:null,
+    commission:null
+  }
+
   ngOnInit(): void {
-      this.loadServices();
+    this.loadServices();
   }
 
   openServiceForm(action:string,id:string){
@@ -50,6 +57,23 @@ export class ListServiceComponent implements OnInit{
       error: (error) => console.log('Erooorr delete',error)
     });
     this.loadServices();
+  }
+
+  filterService(){
+    console.log(this.serviceInfo);
+    this.serviceService.searchService(this.serviceInfo).subscribe({
+      next: (services:any)=>{
+        this.serviceList = services;
+        console.log(this.serviceList);
+        this.serviceInfo = {
+          name:null,
+          price:null,
+          duration:null,
+          commission:null
+        }
+      },
+      error: (error) => console.log('Error fetching services',error)
+    });
   }
 
 }

@@ -312,6 +312,15 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
     items = [
       {
         title: true,
+        name: 'Service'
+      },
+      {
+        name: 'Services',
+        url: '/service',
+        iconComponent: { name: 'cil-drop' }
+      },
+      {
+        title: true,
         name: 'Rendez-vous'
       },
       {
@@ -374,6 +383,10 @@ export const customNavItems = (userPrivilege: string): INavData[] => {
           {
             name: 'Horaire Employe',
             url: '/statistique/work-schedule'
+          },
+          {
+            name: 'Depense',
+            url: '/statistique/depense'
           }
         ]
       },

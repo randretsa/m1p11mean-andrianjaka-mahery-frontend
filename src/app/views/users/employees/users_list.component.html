@@ -1,4 +1,24 @@
 <c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Filtre de recherche</strong>
+      </c-card-header>
+      <c-card-body>
+          <form cForm class="row gx-3 gy-2 align-items-center" (submit)="searchEmploye()">
+            <c-col sm="4">
+                <input cFormControl placeholder="Nom" type="text" [(ngModel)]="userInfo.lastName" name="lastName"/>
+            </c-col>
+            <c-col sm="4">
+                <input cFormControl placeholder="Prenom" type="text" [(ngModel)]="userInfo.firstName" name="firstName" />
+            </c-col>
+            <c-col xs="4">
+              <button cButton type="submit">Rechercher</button>
+            </c-col>
+          </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
     <c-col xs="12">
       <c-card class="mb-4">
         <c-card-header>

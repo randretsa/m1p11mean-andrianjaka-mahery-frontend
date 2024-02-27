@@ -43,4 +43,8 @@ export class UserService {
     updateUser(user: any){
         return this.http.put<any>(this._url+'/'+user._id, user);
     }
+
+    searchEmploye(employe: any){
+        return this.http.post(this._url+'/search',employe);
+    }
 }

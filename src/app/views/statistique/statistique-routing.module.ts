@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReservationComponent } from './reservation/reservation.component';
 import {SalesVolumeComponent} from './sales-volume/sales-volume.component'
 import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
+import { DepenseComponent } from './depense/depense.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -29,6 +31,13 @@ const routes: Routes = [
         component: WorkScheduleComponent,
         data: {
           title: 'Horaire Employe'
+        }
+      },
+      {
+        path: 'depense',
+        component: DepenseComponent,
+        data: {
+          title: 'Depense'
         }
       }
     ]

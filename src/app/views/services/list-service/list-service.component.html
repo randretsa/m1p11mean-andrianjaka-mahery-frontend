@@ -1,4 +1,30 @@
 <c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header ngPreserveWhitespaces>
+        <strong>Filtre de recherche</strong>
+      </c-card-header>
+      <c-card-body>
+          <form cForm class="row gx-3 gy-2 align-items-center" (submit)="filterService()">
+            <c-col sm="3">
+                <input cFormControl [(ngModel)]="serviceInfo.name" placeholder="Nom" name="name"/>
+            </c-col>
+            <c-col sm="3">
+                <input cFormControl [(ngModel)]="serviceInfo.price" placeholder="Prix" type="number" name="price"/>
+            </c-col>
+            <c-col sm="2">
+                <input cFormControl [(ngModel)]="serviceInfo.duration" placeholder="Durée" type="number" name="duration"/>
+            </c-col>
+            <c-col sm="2">
+                <input cFormControl [(ngModel)]="serviceInfo.commission" placeholder="Commission" type="number" name="commission"/>
+            </c-col>
+            <c-col xs="2">
+              <button cButton type="submit">Rechercher</button>
+            </c-col>
+          </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
     <c-col xs="12">
       <c-card class="mb-4">
         <c-card-header>

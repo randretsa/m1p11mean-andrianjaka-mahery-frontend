@@ -1,0 +1,62 @@
+<c-row>
+    <c-col xs="6">
+      <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+          <strong>
+            Insertion des dépenses
+          </strong>
+        </c-card-header>
+        <c-card-body>
+            <form cForm class="row g-3" (submit)="addDepense()">
+                <c-col xs="12">
+                    <label cLabel for="inputState">Depenses</label>
+                    <select cSelect id="inputState" [(ngModel)]="depenseInfo.name" name="name">
+                      @for (depense of depenseList; track $index) {
+                        <option [value]="depense._id">{{ depense.name }}</option>
+                      }
+                      @empty {
+                        No depenses
+                      }
+                  </select>
+                </c-col>
+                <c-col xs="12">
+                    <label cLabel for="inputState">Prix</label>
+                    <input cFormControl type="number" [(ngModel)]="depenseInfo.price" name="price">
+                </c-col>
+                <c-col xs="12">
+                    <button cButton type="submit" color="primary">Ajouter</button>
+                </c-col>
+            </form>
+        </c-card-body>
+      </c-card>
+    </c-col>
+    <c-col xs="6">
+      <c-card class="mb-4">
+        <c-card-header>
+          <strong>Liste des Dépense</strong>
+        </c-card-header>
+        <c-card-body>
+            <table [hover]="true" [striped]="true" cTable>
+              <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix</th>
+                <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Salaire</td>
+                    <td>1000 Ariary</td>
+                    <td><button states="normal" color="danger" cButton>Supprimer</button></td>
+                  </tr>
+              </tbody>
+            </table>
+            <button states="normal" color="success" cButton>Estimer</button>
+        </c-card-body>
+      </c-card>
+    </c-col>
+  </c-row>
+  
