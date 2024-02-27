@@ -11,7 +11,7 @@ import { ServicesService } from '../../../services/services/services.service';
 export class ListServiceComponent implements OnInit{
 
   serviceList: any = [];
-
+  loadingProgress = true;
   private serviceService = inject(ServicesService);
 
   constructor(public dialog: MatDialog){}
@@ -44,6 +44,7 @@ export class ListServiceComponent implements OnInit{
     this.serviceService.getAllServices().subscribe({
       next: (services:any)=>{
         this.serviceList = services;
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });

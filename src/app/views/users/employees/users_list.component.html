@@ -25,6 +25,10 @@
           <strong>Liste des employées</strong>
         </c-card-header>
         <c-card-body>
+          <c-row *ngIf="loadingProgress; else autreContenu">
+            <mat-spinner></mat-spinner>
+          </c-row>
+          <ng-template #autreContenu>
           <button states="normal" color="primary" cButton [routerLink]="['/users/user-details', '']">Ajouter</button>
             <table [hover]="true" [striped]="true" cTable>
               <thead>
@@ -44,6 +48,7 @@
                   </tr>                 
               </tbody>
             </table>
+          </ng-template>
         </c-card-body>
       </c-card>
     </c-col>

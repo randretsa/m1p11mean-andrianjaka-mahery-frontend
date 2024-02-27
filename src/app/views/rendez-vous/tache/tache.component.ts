@@ -11,7 +11,7 @@ export class TacheComponent implements OnInit{
 
   appoitmentList: any = [];
   sommeCommission = 0
-
+  loadingProgress = true;
   private appointmentService = inject(AppointmentService);
   constructor(private router: Router){}
 
@@ -25,6 +25,7 @@ export class TacheComponent implements OnInit{
       next: (appointments:any)=>{
         this.appoitmentList = appointments;
         this.sommeCommission = this.calculateSommeCommission();
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });

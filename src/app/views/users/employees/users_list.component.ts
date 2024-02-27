@@ -8,7 +8,7 @@ import { IUser } from 'src/app/types/user';
 export class UsersListComponent implements OnInit{
     public employees: IUser[] = [];
     userService: UserService = inject(UserService);
-
+    loadingProgress = true;
     userInfo = {
       lastName:null,
       firstName:null
@@ -16,7 +16,7 @@ export class UsersListComponent implements OnInit{
 
     ngOnInit(): void {
         this.userService.getUsersByPrivilege('EMPLOYEE')
-        .subscribe(data => this.employees = data);
+        .subscribe(data =>{ this.employees = data; this.loadingProgress = false});
     }
 
     searchEmploye(){

@@ -5,6 +5,10 @@
         <strong>Filtre de recherche</strong>
       </c-card-header>
       <c-card-body>
+        <div *ngIf="loadingProgress; else otherContent">
+          <mat-spinner></mat-spinner>
+        </div>
+        <ng-template #otherContent>
           <form cForm class="row gx-3 gy-2 align-items-center" (submit)="filterService()">
             <c-col sm="3">
                 <input cFormControl [(ngModel)]="serviceInfo.name" placeholder="Nom" name="name"/>
@@ -22,6 +26,7 @@
               <button cButton type="submit">Rechercher</button>
             </c-col>
           </form>
+        </ng-template>
       </c-card-body>
     </c-card>
   </c-col>

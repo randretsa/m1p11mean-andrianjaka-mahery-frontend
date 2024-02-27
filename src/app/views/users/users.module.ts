@@ -10,7 +10,7 @@ import { ButtonModule } from '@coreui/angular';
 import { TableModule } from '@coreui/angular';
 import { UsersListComponent } from './employees/users_list.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     ReactiveFormsModule,
@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     IconModule,
     ButtonModule,
-    TableModule
+    TableModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     UserDetailComponent,

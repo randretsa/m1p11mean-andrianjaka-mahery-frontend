@@ -15,6 +15,7 @@ export class UserDetailComponent{
     userService: UserService = inject(UserService);
     scheduleService: WorkScheduleService = inject(WorkScheduleService);
     isNew = true;
+    loadingProgress = true;
 
     user: any = {
         gender: {
@@ -173,7 +174,8 @@ export class UserDetailComponent{
             }
         } 
       );
-  
+       
+      this.loadingProgress = false;
     })
   }
 }

@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SpecialOfferComponent} from './special-offers/special-offers.component'
 import { IconModule } from '@coreui/icons-angular';
 import { SpecialOfferListComponent } from './special-offers/special-offers-list.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     SpecialOfferComponent,SpecialOfferListComponent,
@@ -33,7 +33,8 @@ import { SpecialOfferListComponent } from './special-offers/special-offers-list.
     ModalModule,PopoverModule,
     TooltipModule,
     IconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
 })
 export class ServicesModule {
