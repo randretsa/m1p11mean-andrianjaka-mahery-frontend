@@ -9,7 +9,7 @@ import { StatsService } from 'src/app/services/stats/stat.services';
   styleUrl: './benefice.component.scss'
 })
 export class BeneficeComponent {
-
+  loadingProgress = true;
   //States management
   statsService: StatsService = inject(StatsService);
   route: ActivatedRoute = inject(ActivatedRoute);
@@ -55,6 +55,7 @@ this.chart = {
 }
 
 getMonthly(year: string | any){
+  this.loadingProgress = true;
   const somme = this.route.snapshot.params['somme']
   this.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   this.labels = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
@@ -65,11 +66,13 @@ getMonthly(year: string | any){
       }
 
       this.loadChart(this.labels, this.data);
+      this.loadingProgress = false;
     }
   );
 }
   // Loading data for the stats
 getDaily(year: string | any){
+  this.loadingProgress = true;
   this.data = [0, 0, 0, 0, 0, 0, 0]
   this.labels = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
   this.statsService.getDailySalesVolume().subscribe(
@@ -79,6 +82,7 @@ getDaily(year: string | any){
       }
 
       this.loadChart(this.labels, this.data);
+      this.loadingProgress = false;
     }
   );
 }

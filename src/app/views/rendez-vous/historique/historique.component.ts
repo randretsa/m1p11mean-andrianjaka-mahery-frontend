@@ -17,6 +17,7 @@ export class HistoriqueComponent implements OnInit{
   private userService = inject(UserService);
   constructor(private router: Router){}
   employeList: any = [];
+  loadingProgress = true;
 
   appointmentInfo = {
     date:null,
@@ -49,6 +50,7 @@ export class HistoriqueComponent implements OnInit{
     this.appointmentService.getHistorique(id).subscribe({
       next: (appointments:any)=>{
         this.appoitmentList = appointments;
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching appointment',error)
     });
@@ -73,6 +75,7 @@ export class HistoriqueComponent implements OnInit{
   }
 
   searchAppointment(){
+    this.loadingProgress = true;
     console.log(this.appointmentInfo)
     this.appointmentService.searchAppointment(this.appointmentInfo).subscribe({
       next: (appointments:any)=>{
@@ -84,6 +87,7 @@ export class HistoriqueComponent implements OnInit{
           employe:null,
           ispayed:null
         }
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching appointment',error)
     });

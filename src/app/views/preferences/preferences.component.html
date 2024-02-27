@@ -11,6 +11,9 @@
           </strong>
         </c-card-header>
         <c-card-body>
+          <div *ngIf="loadingProgress;">
+            <mat-spinner></mat-spinner>
+          </div>
             <form cForm class="row g-3" (submit)="submitForm()">
                 <c-col xs="12">
                     <label cLabel for="inputState">Services</label>

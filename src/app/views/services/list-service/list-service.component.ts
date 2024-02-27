@@ -61,6 +61,7 @@ export class ListServiceComponent implements OnInit{
   }
 
   filterService(){
+    this.loadingProgress= true;
     console.log(this.serviceInfo);
     this.serviceService.searchService(this.serviceInfo).subscribe({
       next: (services:any)=>{
@@ -72,6 +73,7 @@ export class ListServiceComponent implements OnInit{
           duration:null,
           commission:null
         }
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });

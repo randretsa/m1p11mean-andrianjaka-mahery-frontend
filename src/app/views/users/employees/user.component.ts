@@ -152,6 +152,7 @@ export class UserDetailComponent{
               dateOfBirth: formatDateForInput(this.user.birthDate),
               phoneNumber: this.user.phoneNumber
             });
+            this.loadingProgress = false;
       });
          this.isNew = false; 
       } 
@@ -175,7 +176,6 @@ export class UserDetailComponent{
         } 
       );
        
-      this.loadingProgress = false;
     })
   }
 }

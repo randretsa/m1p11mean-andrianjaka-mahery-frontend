@@ -7,12 +7,15 @@ import { SpecialOfferService } from 'src/app/services/services/specialOffer.serv
 export class SpecialOfferListComponent implements OnInit{
     specialOfferService: SpecialOfferService = inject(SpecialOfferService); 
     specialOffers: any;
-    
+    loadingProgress = true;  
     constructor(){}
 
     ngOnInit(): void {
         this.specialOfferService.getSpecialOffers().subscribe(
-            data => this.specialOffers = data
+            data =>{ 
+                this.specialOffers = data;
+                this.loadingProgress = false;
+            }
         );    
     }
 }

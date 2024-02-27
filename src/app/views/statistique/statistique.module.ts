@@ -10,6 +10,7 @@ import { WorkScheduleComponent } from './work-schedule/work-schedule.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DepenseComponent } from './depense/depense.component';
 import { BeneficeComponent } from './benefice/benefice.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   imports: [
     StatistiqueRoutingModule,
@@ -21,7 +22,8 @@ import { BeneficeComponent } from './benefice/benefice.component';
     FormsModule,
     ButtonModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     ReservationComponent,

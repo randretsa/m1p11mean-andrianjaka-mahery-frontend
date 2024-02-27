@@ -20,6 +20,7 @@ export class UsersListComponent implements OnInit{
     }
 
     searchEmploye(){
+        this.loadingProgress = true;
         console.log(this.userInfo)
         this.userService.searchEmploye(this.userInfo).subscribe({
             next: (users:any)=>{
@@ -28,6 +29,7 @@ export class UsersListComponent implements OnInit{
                     lastName:null,
                     firstName:null
                 }
+                this.loadingProgress = false;
             },
             error: (error) => console.log('Error fetching appointment',error)
         });

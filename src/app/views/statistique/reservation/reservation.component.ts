@@ -7,7 +7,7 @@ import { AppointmentService } from 'src/app/services/appointment/appointment.ser
   styleUrl: './reservation.component.scss'
 })
 export class ReservationComponent implements OnInit{
-
+  loadingProgress = true;
   by = "mois"
   labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   data = [0]
@@ -42,22 +42,26 @@ export class ReservationComponent implements OnInit{
   }
 
   loadDataMonth(){
+    this.loadingProgress = true;
     this.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.appointmentService.getAppointmentByMonth().subscribe({
       next: (datas:any)=>{
         this.data = datas;
         this.loadChart();
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });
   }
 
   loadDataDay(){
+    this.loadingProgress = true;
     this.labels = ['Lundi', 'Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche']
     this.appointmentService.getAppointmentByWeek().subscribe({
       next: (datas:any)=>{
         this.data = datas;
         this.loadChart();
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });

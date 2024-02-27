@@ -9,6 +9,7 @@ import { result, thru } from 'lodash-es';
 export class SalesVolumeComponent implements OnInit{
 
   //States management
+  loadingProgress = true;
   statsService: StatsService = inject(StatsService);
   labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -52,6 +53,7 @@ this.chart = {
 }
 
 getMonthly(year: string | any){
+  this.loadingProgress = true;
   this.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   this.labels = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
   this.statsService.getSalesVolumeByMonth().subscribe(
@@ -59,13 +61,14 @@ getMonthly(year: string | any){
       for (let index = 0; index < results.length; index++) {
         if(results[index].year == year) this.data[results[index].month-1] = results[index].totalServicesPrice;
       }
-
+      this.loadingProgress = false;
       this.loadChart(this.labels, this.data);
     }
   );
 }
   // Loading data for the stats
 getDaily(year: string | any){
+  this.loadingProgress = true;
   this.data = [0, 0, 0, 0, 0, 0, 0]
   this.labels = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
   this.statsService.getDailySalesVolume().subscribe(
@@ -75,6 +78,7 @@ getDaily(year: string | any){
       }
 
       this.loadChart(this.labels, this.data);
+      this.loadingProgress = false;
     }
   );
 }

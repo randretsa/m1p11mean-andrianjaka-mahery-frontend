@@ -14,6 +14,9 @@
                 </select>
               </c-col>
           </form>
+          <div *ngIf="loadingProgress">
+            <mat-spinner></mat-spinner>
+        </div>
           <c-chart type="bar" [data]="chart"></c-chart>
         </c-card-body>
       </c-card>

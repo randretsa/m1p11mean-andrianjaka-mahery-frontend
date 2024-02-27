@@ -6,6 +6,9 @@
           Chiffre d'affaire
         </c-card-header>
         <c-card-body>
+          <div *ngIf="loadingProgress">
+            <mat-spinner></mat-spinner>
+          </div>
           <form cForm [formGroup]="filterForm" class="row g-3">
               <c-row style="padding: 1%">
               <c-col md="4">

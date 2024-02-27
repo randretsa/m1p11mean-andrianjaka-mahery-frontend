@@ -6,6 +6,9 @@
           Bar Chart
         </c-card-header>
         <c-card-body>
+          <div *ngIf="loadingProgress">
+            <mat-spinner></mat-spinner>
+          </div>
           <form cForm class="row g-3">
               <c-col md="9">
                 <select cSelect id="inputState" [(ngModel)]="by" name="by" (ngModelChange)="changeBy()">

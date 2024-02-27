@@ -39,9 +39,9 @@
                 <th scope="col">contact</th>
               </tr>
               </thead>
-              <tbody *ngFor="let employee of employees">
+              <tbody *ngFor="let employee of employees; let i = index">
                  <tr [routerLink]="['/users/user-details', employee._id]">
-                    <td scope="col">{{employee._id}}</td>
+                    <td scope="col">{{i + 1}}</td>
                     <td scope="col">{{employee.lastName}}</td>
                     <td scope="col">{{employee.firstName}}</td>
                     <td scope="col">{{employee.phoneNumber}}</td>

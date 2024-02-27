@@ -6,11 +6,12 @@ import { UserService } from 'src/app/services/user.services';
 import { PreferencesService } from 'src/app/services/preferences/preferences.service';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notifications/notification.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-preferences',
   standalone: true,
   imports: [CommonModule,
-    CardModule, GridModule,FormModule,ButtonModule,
+    CardModule, GridModule,FormModule,ButtonModule,MatProgressSpinnerModule,
     FormsModule],
   templateUrl: './preferences.component.html',
   styleUrl: './preferences.component.scss'
@@ -19,6 +20,7 @@ export class PreferencesComponent implements OnInit{
   notificationService: NotificationService = inject(NotificationService);
   serviceList: any = [];
   employeList: any = [];
+  loadingProgress = false;
   preference = {
     id:"",
     customer: "",
@@ -90,18 +92,24 @@ export class PreferencesComponent implements OnInit{
   }
 
   createPreferences(){
+    this.loadingProgress = true;
     this.preferenceService.createPreferences(this.preference).subscribe({
       next: (preference:any)=>{
         console.log("create"+preference);
+        this.loadingProgress = false;
+        this.loadPage();
       },
       error: (error) => console.log('Error creating preferences',error)
     });
   }
 
   updatePreferences(id:string){
+    this.loadingProgress =true;
     this.preferenceService.updateService(id,this.preference).subscribe({
       next: (preference:any)=>{
         console.log("update"+preference);
+        this.loadingProgress = false;
+        this.loadPage();
       },
       error: (error) => console.log('Error creating preferences',error)
     })

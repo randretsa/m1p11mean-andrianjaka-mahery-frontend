@@ -8,7 +8,8 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { AppointmentService } from 'src/app/services/appointment/appointment.service';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 /**
  * @title Drag&Drop connected sorting group
  */
@@ -17,12 +18,12 @@ import { AppointmentService } from 'src/app/services/appointment/appointment.ser
   templateUrl: 'drag-and-drop.component.html',
   styleUrls: ['cdk-drag-drop-connected-sorting-group-example.css'],
   standalone: true,
-  imports: [CdkDropListGroup, CdkDropList, CdkDrag],
+  imports: [CommonModule,CdkDropListGroup, CdkDropList, CdkDrag, MatProgressSpinnerModule],
 })
 export class DragAndDropComponent implements OnInit{
 
   private appointmentService = inject(AppointmentService);
-
+  loadingProgress = true;
   ngOnInit(): void {
     this.loadPage();
   }
@@ -43,6 +44,7 @@ export class DragAndDropComponent implements OnInit{
     this.appointmentService.getAppointmentAchiement(id,{isdone: false}).subscribe({
       next: (appointments:any)=>{
         this.todo = appointments;
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });
@@ -52,12 +54,14 @@ export class DragAndDropComponent implements OnInit{
     this.appointmentService.getAppointmentAchiement(id,{isdone: true}).subscribe({
       next: (appointments:any)=>{
         this.done = appointments;
+        this.loadingProgress = false;
       },
       error: (error) => console.log('Error fetching services',error)
     });
   }
 
   drop(event: CdkDragDrop<IAppointment[]>) {
+    this.loadingProgress = true;
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -71,6 +75,7 @@ export class DragAndDropComponent implements OnInit{
         this.appointmentService.updateAppointmentEtat(event.container.data[event.currentIndex]._id,{isdone: true}).subscribe({
           next: (appointment:any)=>{
             //console.log(appointment)
+            this.loadingProgress = false;
           },
           error: (error) => console.log('Error updating service',error)
         });
@@ -78,6 +83,7 @@ export class DragAndDropComponent implements OnInit{
         this.appointmentService.updateAppointmentEtat(event.container.data[event.currentIndex]._id,{isdone: false}).subscribe({
           next: (appointment:any)=>{
             //console.log(appointment)
+            this.loadingProgress = false;
           },
           error: (error) => console.log('Error updating service',error)
         });
