@@ -93,7 +93,7 @@
                         Heures de pause
                     </h6>
                     <div formArrayName="aliases">
-                        <button type="button" (click)="addAlias()">Ajouter des pauses</button>
+                        <button type="button" cButton color="primary" class="me-md-2" (click)="addAlias()">Ajouter des pauses</button>
                         <c-row *ngFor="let alias of aliases.controls; let i=index" [formGroupName]="i">
 
                             <c-col>
